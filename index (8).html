@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictza - Smart Mobile Prediction | FDS Mini Project</title>
+  <meta name="theme-color" content="#f7f8fc">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fc;--surface:#fff;--surface-soft:#f0f3ff;--ink:#17213a;--muted:#68738b;--line:#e4e8f2;--accent:#6157e8;--accent-2:#8b7cff;--mint:#dff8ed;--shadow:0 18px 55px rgba(34,43,89,.09);--radius:24px;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:92px}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}button,select{font:inherit}button,a,select{-webkit-tap-highlight-color:transparent}::selection{background:#dcd8ff;color:#211b69}
+.navbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px max(5vw,22px);background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(222,226,240,.8)}.logo{display:flex;align-items:center;gap:11px;min-width:max-content}.logo>span{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:linear-gradient(135deg,var(--accent),#9386ff);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-1px;box-shadow:0 8px 18px #6157e833}.logo small{display:block;font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--muted)}.nav-links{display:flex;align-items:center;gap:clamp(12px,2.1vw,30px)}.nav-links a{font-size:13px;font-weight:700;color:#68738b;transition:color .2s}.nav-links a:hover{color:var(--accent)}.nav-cta{background:var(--ink);color:white;padding:11px 17px;border-radius:13px;font-size:13px;font-weight:700;white-space:nowrap;transition:transform .2s,background .2s}.nav-cta:hover{transform:translateY(-2px);background:var(--accent)}
+.hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1.05fr .85fr;align-items:center;gap:clamp(38px,8vw,120px);max-width:1240px;margin:auto;padding:clamp(70px,9vw,130px) 28px 100px;min-height:620px}.hero:before{content:"";position:absolute;z-index:-2;width:480px;height:480px;right:4%;top:8%;border-radius:50%;background:radial-gradient(circle,#e9e5ff 0,rgba(233,229,255,0) 70%)}.hero-orb{position:absolute;z-index:-1;border-radius:50%;filter:blur(1px)}.orb-one{width:13px;height:13px;background:#8a7aff;right:14%;top:17%;box-shadow:0 0 0 9px #8a7aff19}.orb-two{width:8px;height:8px;background:#4ccca2;right:45%;bottom:18%;box-shadow:0 0 0 8px #4ccca21c}.eyebrow,.section-kicker{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:11px;letter-spacing:.14em;font-weight:800}.pulse-dot{width:8px;height:8px;background:#43c99c;border-radius:50%;box-shadow:0 0 0 5px #43c99c1c}.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,6.2vw,82px);line-height:1.02;letter-spacing:-.065em;margin:23px 0 24px;font-weight:700}.hero h1 span{color:var(--accent)}.hero-description{max-width:530px;color:var(--muted);font-size:17px;line-height:1.8}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:31px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border-radius:14px;padding:14px 20px;font-weight:700;font-size:14px;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-3px)}.btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 25px #6157e833}.btn.primary:hover{box-shadow:0 15px 32px #6157e84a}.btn.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}.hero-footnote{display:flex;align-items:center;gap:10px;margin-top:34px;color:#8790a5;font-size:10px;letter-spacing:.14em;font-weight:800}.tiny-line{width:28px;height:2px;background:#8b7cff;border-radius:4px}
+.hero-card{justify-self:center;width:min(100%,370px);padding:25px;border:1px solid #fff;border-radius:30px;background:rgba(255,255,255,.78);box-shadow:0 30px 90px rgba(50,48,113,.13);transform:rotate(1.5deg)}.phone-visual{position:relative;width:170px;height:265px;margin:0 auto 25px;padding:9px;border:5px solid #242943;border-radius:31px;background:#242943;box-shadow:0 20px 35px #2429432a}.phone-camera{position:absolute;z-index:2;top:10px;left:50%;transform:translateX(-50%);width:48px;height:8px;border-radius:8px;background:#11162c}.phone-screen{height:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:27px 13px 16px;border-radius:20px;background:linear-gradient(155deg,#b8b2ff 0%,#7165ee 50%,#3e3e9b 100%);color:#fff}.phone-screen>span{font-family:'Space Grotesk';font-size:43px;font-weight:700;letter-spacing:-3px}.phone-screen small{font-size:8px;letter-spacing:.15em;font-weight:800}.phone-wave{position:absolute;width:170px;height:170px;right:-80px;top:65px;border:1px solid #ffffff77;border-radius:44% 56% 65% 35%;transform:rotate(30deg);box-shadow:0 0 0 18px #ffffff13,0 0 0 37px #ffffff10}.hero-card-caption{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted-label{font-size:10px;letter-spacing:.13em;font-weight:800;color:#8790a5}.hero-card-caption h3{font-family:'Space Grotesk';font-size:18px;letter-spacing:-.04em;margin-top:4px}.round-arrow{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--surface-soft);color:var(--accent);font-size:20px}.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}.mini-stats div{display:flex;flex-direction:column;gap:1px}.mini-stats strong{font-family:'Space Grotesk';font-size:17px}.mini-stats small{font-size:11px;color:var(--muted)}
+.section{padding:clamp(70px,8vw,110px) max(5vw,24px);max-width:1440px;margin:0 auto}.section-alt{max-width:none;background:#f0f2fb}.section-alt>*{max-width:1240px;margin-left:auto;margin-right:auto}.section-title{text-align:center;max-width:720px;margin:0 auto 45px}.section-kicker{justify-content:center}.section-title h2,.conclusion-panel h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(31px,4vw,48px);line-height:1.15;letter-spacing:-.055em;margin:12px 0}.section-description{color:var(--muted);font-size:15px;max-width:600px;margin:0 auto}.workflow-grid,.cleaning-grid,.ethics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;max-width:1240px;margin:auto}.workflow-card,.clean-card,.ethic-card,.stat-card,.metric-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:21px;padding:25px;box-shadow:0 6px 25px #25305b06;transition:transform .25s,border-color .25s,box-shadow .25s}.workflow-card:hover,.clean-card:hover,.ethic-card:hover,.stat-card:hover,.metric-card:hover{transform:translateY(-5px);border-color:#c9c3ff;box-shadow:var(--shadow)}.step-number{position:absolute;top:20px;right:20px;color:#a4a9ba;font-size:11px;font-weight:800;letter-spacing:.1em}.step-icon{display:grid;place-items:center;width:49px;height:49px;border-radius:15px;background:#eeecff;color:var(--accent);font-size:24px;margin-bottom:27px}.workflow-card h3,.clean-card h3,.ethic-card h3{font-family:'Space Grotesk';font-size:18px;letter-spacing:-.03em;margin-bottom:9px}.workflow-card p,.clean-card p,.ethic-card p,.stat-card p,.metric-card p{font-size:13px;color:var(--muted);line-height:1.75}.step-tag{display:inline-block;margin-top:22px;padding:6px 9px;border-radius:8px;background:#f2f3f9;color:#7a8299;font-size:9px;letter-spacing:.12em;font-weight:800}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:0 auto 24px}.stat-card{padding:22px}.stat-label{display:block;font-size:10px;color:#818ba2;font-weight:800;letter-spacing:.12em}.stat-card strong{display:block;font-family:'Space Grotesk';font-size:28px;letter-spacing:-.05em;margin:6px 0 0}.table-container{padding:26px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.table-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:19px}.table-header h3{font-family:'Space Grotesk';font-size:20px;letter-spacing:-.035em}.table-header p{color:var(--muted);font-size:12px;margin-top:3px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 11px;background:#e8e6ff;color:var(--accent);font-size:9px;font-weight:800;letter-spacing:.1em;white-space:nowrap}.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:13px}table{width:100%;border-collapse:collapse;min-width:700px;text-align:left}th{background:#f7f8fc;color:#778198;font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:800}td,th{padding:14px 15px;border-bottom:1px solid #edf0f6}td{font-size:12px;color:#47516a}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#fafaff}.fine-print{font-size:11px;line-height:1.8;color:#8790a5;margin-top:17px}.clean-card{padding:24px}.check-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:13px;background:#e0f8ee;color:#15986d;font-size:20px;font-weight:800;margin-bottom:22px}.status-label{display:inline-block;margin-top:19px;color:#929bb0;font-size:9px;font-weight:800;letter-spacing:.11em}
+.prediction-section{position:relative}.prediction-section:before{content:"";position:absolute;z-index:-1;width:500px;height:500px;left:-220px;top:20%;border-radius:50%;background:radial-gradient(circle,#e8e5ff,transparent 70%)}.prediction-box{max-width:850px;margin:0 auto;padding:clamp(23px,4vw,42px);background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 25px 80px rgba(35,43,91,.1)}.prediction-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:25px;border-bottom:1px solid var(--line)}.prediction-top h3{font-family:'Space Grotesk';font-size:25px;letter-spacing:-.045em;margin:4px 0}.form-help{color:var(--muted);font-size:12px}.prediction-symbol{display:grid;place-items:center;width:54px;height:54px;border-radius:17px;background:#eeecff;color:var(--accent);font-size:26px}.inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:26px 0}.input-group{display:flex;flex-direction:column;gap:8px}.input-group label{font-size:12px;font-weight:800;color:#3b4660}.input-group select{appearance:auto;width:100%;padding:14px 15px;border:1px solid #dfe4ef;border-radius:12px;background:#fbfcff;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}.input-group select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px #8b7cff20}.input-group select:disabled{opacity:.55;cursor:not-allowed}.predict-btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;padding:15px 20px;border:0;border-radius:13px;background:var(--accent);color:white;font-weight:800;cursor:pointer;box-shadow:0 10px 25px #6157e82e;transition:transform .2s,background .2s}.predict-btn:hover{background:#4f46cf;transform:translateY(-2px)}.result{margin-top:22px;padding:22px;border:1px dashed #d9d5ff;border-radius:17px;background:#f8f7ff;text-align:center}.result-symbol{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 10px;border-radius:14px;background:#e9e6ff;color:var(--accent);font-family:'Space Grotesk';font-size:23px;font-weight:700}.result h3{font-family:'Space Grotesk';font-size:21px;letter-spacing:-.04em;margin:6px 0}.result p:last-child{color:var(--muted);font-size:13px}.metrics-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;max-width:950px;margin:0 auto}.metric-card{text-align:center;padding:28px}.metric-card>span{display:inline-block;color:var(--accent);background:#eeecff;padding:7px 11px;border-radius:9px;font-size:10px;font-weight:800;letter-spacing:.1em}.metric-card h3{font-family:'Space Grotesk';font-size:36px;letter-spacing:-.05em;margin:10px 0 0}.ethic-card{padding:24px}.ethic-card>span{display:block;color:var(--accent);font-family:'Space Grotesk';font-weight:700;font-size:13px;margin-bottom:26px}.conclusion-section{padding-top:30px}.conclusion-panel{max-width:1240px;margin:auto;padding:clamp(35px,6vw,75px);border-radius:28px;background:linear-gradient(125deg,#262653,#5146b7 65%,#8578f5);color:white;text-align:center;box-shadow:0 24px 60px #4037a52e}.conclusion-panel .section-kicker{color:#c7c0ff}.conclusion-panel h2{font-size:clamp(34px,4vw,52px)}.conclusion-panel>p:not(.section-kicker){max-width:690px;margin:0 auto 26px;color:#e0def7;font-size:14px}.conclusion-panel .btn.primary{background:#fff;color:#4c43bf;box-shadow:none}footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px max(5vw,24px);background:#fff;border-top:1px solid var(--line)}footer>p,footer>small{font-size:11px;color:#8790a5}.footer-logo>span{width:37px;height:37px;border-radius:12px;font-size:13px}.footer-logo small{font-size:10px}
+.reveal{opacity:1;transform:translateY(0)}.reveal:not(.is-visible){opacity:0;transform:translateY(15px)}.reveal.is-visible{opacity:1;transform:translateY(0);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+@media(max-width:900px){.navbar{gap:13px}.nav-links{gap:13px}.nav-links a{font-size:12px}.hero{grid-template-columns:1fr .7fr;gap:30px}.hero-card{padding:20px}.workflow-grid,.cleaning-grid,.ethics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.navbar{position:sticky;padding:11px 16px;flex-wrap:wrap}.logo>span{width:39px;height:39px}.logo small{font-size:10px}.nav-links{order:3;width:100%;overflow-x:auto;justify-content:space-between;padding:5px 1px 2px;gap:17px}.nav-links a{white-space:nowrap}.nav-cta{padding:10px 12px;font-size:11px}.hero{grid-template-columns:1fr;padding:62px 23px 70px;gap:48px;min-height:auto}.hero h1{font-size:clamp(48px,13vw,68px)}.hero-description{font-size:15px}.hero-card{width:min(100%,340px)}.section{padding:67px 19px}.section-title{margin-bottom:30px}.section-title h2{font-size:34px}.workflow-grid,.cleaning-grid,.ethics-grid{grid-template-columns:1fr;gap:12px}.workflow-card,.clean-card,.ethic-card{padding:23px}.step-icon{margin-bottom:18px}.stats-grid{gap:10px}.stat-card{padding:17px}.stat-card strong{font-size:23px}.table-container{padding:16px;border-radius:19px}.table-header{align-items:flex-start}.table-header h3{font-size:17px}.pill{font-size:8px}.inputs{grid-template-columns:1fr;gap:15px}.prediction-box{padding:22px 17px;border-radius:22px}.prediction-top h3{font-size:22px}.prediction-symbol{width:44px;height:44px;flex-shrink:0}.metrics-grid{grid-template-columns:1fr;gap:12px}.metric-card{padding:22px}.conclusion-panel{padding:38px 22px}.conclusion-panel h2{font-size:36px}footer{flex-wrap:wrap;justify-content:center;text-align:center}footer>p{width:100%;order:3}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal:not(.is-visible){opacity:1;transform:none}}
+
+/* 3D PHONE VIEWER (realistic) */
+.phone-stage{display:none;position:relative;height:350px;margin:0 auto 4px;perspective:1100px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.phone-stage.is-visible{display:block}.phone-stage.dragging{cursor:grabbing}
+.phone-3d{--sheen:50;position:absolute;left:50%;top:50%;width:150px;height:300px;margin:-165px 0 0 -75px;transform-style:preserve-3d;will-change:transform}
+.phone-layer,.phone-front,.phone-back{position:absolute;inset:0;border-radius:30px}
+.phone-layer{background:var(--frame)}
+.p3-btn{position:absolute;left:71px;width:8px;border-radius:3px;background:var(--frame);filter:brightness(1.18)}
+.phone-front{background:#020308;padding:4px;backface-visibility:hidden;transform:translateZ(9px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 0 6px rgba(255,255,255,.08)}
+.p3-screen{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;color:#fff;font-family:'DM Sans','Space Grotesk',system-ui,sans-serif}
+.p3-screen:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.28),transparent 45%),radial-gradient(circle at 85% 80%,rgba(0,0,0,.35),transparent 55%)}
+.p3-island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:48px;height:14px;border-radius:10px;background:#000;box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+.p3-island:after{content:"";position:absolute;right:5px;top:4px;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,#1d2a55,#05060d 70%)}
+.p3-punch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#27335e,#000 65%);box-shadow:0 0 0 1.5px #000}
+.p3-status{position:absolute;top:11px;left:16px;right:15px;display:flex;justify-content:space-between;align-items:center;font-size:7px;font-weight:700;letter-spacing:.02em}
+.p3-sig{display:inline-flex;align-items:flex-end;gap:1px;margin-right:4px;height:7px}.p3-sig i{display:block;width:2px;background:#fff;border-radius:1px}
+.p3-bat{display:inline-block;vertical-align:middle;width:15px;height:7px;border:1px solid rgba(255,255,255,.85);border-radius:2.5px;position:relative}.p3-bat:before{content:"";position:absolute;inset:1px;right:3px;background:#fff;border-radius:1px}
+.p3-date{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:9px;font-weight:600;opacity:.92}
+.p3-time{position:absolute;top:60px;left:0;right:0;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:50px;font-weight:600;letter-spacing:-2px;line-height:1;text-shadow:0 3px 14px rgba(0,0,0,.2)}
+.p3-quick{position:absolute;bottom:22px;width:24px;height:24px;border-radius:50%;background:rgba(20,20,35,.38);display:grid;place-items:center}.p3-quick:after{content:"";width:8px;height:10px;border-radius:2px;background:rgba(255,255,255,.9)}
+.p3-bar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:50px;height:4px;border-radius:4px;background:rgba(255,255,255,.85)}
+.p3-glass{position:absolute;inset:0;border-radius:30px;pointer-events:none;background:linear-gradient(112deg,transparent 0%,rgba(255,255,255,.04) 38%,rgba(255,255,255,.34) 49%,rgba(255,255,255,.04) 60%,transparent 100%);background-size:280% 100%;background-position:calc(var(--sheen) * 1%) 0}
+.phone-back{background:var(--back);backface-visibility:hidden;transform:rotateY(180deg) translateZ(9px);transform-style:preserve-3d;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 0 14px rgba(0,0,0,.18)}
+.phone-back:before{content:"";position:absolute;inset:0;border-radius:30px;background:radial-gradient(circle at 25% 12%,rgba(255,255,255,.3),transparent 50%),linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.14))}
+.phone-front.has-photo,.phone-back.has-photo{background-size:100% 100%;background-repeat:no-repeat}
+.phone-front.has-photo{padding:0}.phone-front.has-photo>:not(.p3-glass),.phone-back.has-photo>:not(.p3-glass){display:none}
+.p3-camera{position:absolute;transform-style:preserve-3d}
+.p3-cshadow{position:absolute;inset:-3px -2px -5px -2px;border-radius:24px;background:rgba(0,0,0,.35);filter:blur(4px)}
+.p3-module,.p3-plate{position:absolute;inset:0}
+.p3-plate{background:var(--frame);filter:brightness(.72)}
+.p3-module{--lens:26px;display:grid;grid-template-columns:repeat(2,var(--lens));justify-content:center;align-content:center;gap:4px;background:linear-gradient(145deg,rgba(255,255,255,.34),rgba(255,255,255,0) 45%,rgba(0,0,0,.2)),var(--frame);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 -2px 4px rgba(0,0,0,.2)}
+.p3-square{border-radius:20px}.p3-square.p3-three .p3-lens:nth-child(2){grid-column:1;grid-row:2}.p3-square .p3-lens:nth-child(2){grid-column:2;grid-row:2}.p3-square.p3-three .p3-lens:nth-child(3){grid-column:2;grid-row:1/3;align-self:center}.p3-square.p3-three .p3-flash{position:absolute;top:6px;right:7px;width:7px;height:7px}
+.p3-squircle{border-radius:24px;gap:8px}.p3-circle{--lens:24px;border-radius:50%;gap:8px}
+.p3-pill{--lens:24px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:22px}
+.p3-column-wrap{display:flex;flex-direction:column;gap:10px}
+.p3-lens{position:relative;width:var(--lens,26px);height:var(--lens,26px);border-radius:50%;background:conic-gradient(from 200deg,#eceef5,#7b8092,#f7f8fc,#555b6e,#eceef5);box-shadow:0 2px 4px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.45)}
+.p3-lens:before{content:"";position:absolute;inset:3px;border-radius:50%;background:radial-gradient(circle at 66% 70%,rgba(130,95,255,.6),transparent 38%),radial-gradient(circle,#000 0 28%,#161d42 46%,#080a15 72%);box-shadow:inset 0 0 0 1px #000}
+.p3-lens:after{content:"";position:absolute;left:26%;top:20%;width:34%;height:22%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.85),transparent 72%);transform:rotate(-32deg)}
+.p3-column-wrap .p3-lens{--lens:28px;box-shadow:0 0 0 3px rgba(0,0,0,.18),0 3px 6px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.45)}
+.p3-flash{width:9px;height:9px;border-radius:50%;place-self:center;background:radial-gradient(circle,#fffbe6,#e8d89a 60%,#8a7a45);box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)}
+.p3-brand{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,.72);text-shadow:0 -1px 0 rgba(0,0,0,.2)}
+.phone-shadow{position:absolute;left:50%;bottom:6px;width:160px;height:24px;margin-left:-80px;border-radius:50%;background:radial-gradient(ellipse,rgba(30,28,80,.38),transparent 70%)}
+
+.phone-photo{display:none;position:absolute;left:50%;top:50%;height:332px;width:auto;transform:translate(-50%,-50%);filter:drop-shadow(0 18px 22px rgba(40,30,110,.22));animation:p3float 5s ease-in-out infinite;pointer-events:none}
+.phone-stage.photo-mode .phone-photo{display:block}.phone-stage.photo-mode .phone-3d,.phone-stage.photo-mode .phone-shadow{display:none}
+.phone-stage.photo-mode{cursor:default}
+@keyframes p3float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 7px))}}
+.p3-pillv{--lens:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border-radius:21px}
+.p3-pillv.p3-three .p3-flash{position:static}
+.p3-pillv .p3-flash{position:absolute;left:50px;top:36px}
+.phone-hint{display:none;text-align:center;font-size:10px;letter-spacing:.12em;font-weight:800;color:#8790a5;margin-bottom:16px}
+.phone-hint.is-visible{display:block}
+
+/* ===== SALES FORECAST ===== */
+.forecast-section{border-top:1px solid var(--line)}
+.forecast-box{max-width:980px}
+.data-banner{display:flex;gap:10px;align-items:flex-start;margin:0 0 22px;padding:12px 15px;border:1px solid #d4d0fb;border-radius:14px;background:#f1efff;color:#3b3a8a;font-size:13px;line-height:1.55}
+.data-banner b{white-space:nowrap}
+.fc-inputs{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+.fc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 6px}
+.fc-stat{padding:15px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface-soft)}
+.fc-stat small{display:block;margin-bottom:6px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.fc-stat strong{display:block;font-size:clamp(17px,2.2vw,22px);color:var(--ink);line-height:1.2}
+.fc-stat.highlight{background:linear-gradient(135deg,#efecff,#e4f6ee);border-color:#d4d0fb}
+.fc-up{color:#0f8a5f!important}.fc-down{color:#d1435b!important}
+.fc-chart-wrap{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.fc-chart{width:100%;height:auto;display:block}
+.fc-legend{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:8px;color:var(--muted);font-size:12px}
+.fc-legend i{display:inline-block;width:11px;height:11px;margin-right:6px;border-radius:3px;vertical-align:-1px}
+.fc-method{margin:16px 0 0;padding:14px 16px;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;background:var(--surface-soft);color:var(--ink);font-size:13.5px;line-height:1.65}
+.fc-outlook{margin:12px 0 0;padding:14px 16px;border-left:4px solid #f08a24;border-radius:0 12px 12px 0;background:#fff8ee;color:#6b4300;font-size:13.5px;line-height:1.65}
+.fc-table{width:100%;margin-top:16px;border-collapse:collapse;font-size:13.5px}
+.fc-table th,.fc-table td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left}
+.fc-table th{color:var(--muted);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.fc-table tr.is-forecast td{background:#f4f2ff;font-weight:700}
+.fc-scroll{overflow-x:auto}
+.fc-empty{padding:34px 16px;text-align:center;color:var(--muted)}
+.fc-sources{margin:26px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.7;color:var(--muted)}
+.fc-sources h4{margin:0 0 8px;color:var(--ink);font-size:13px}
+.fc-sources ul{margin:0;padding-left:18px}
+.fc-sources a{color:var(--accent);word-break:break-word}
+@media(max-width:760px){.fc-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== STATE-WISE ===== */
+.st-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px}
+.st-btn{padding:11px 16px;border:1px solid #d4d0fb;border-radius:12px;background:#fff;color:var(--accent);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.st-btn:hover{background:#f1efff;transform:translateY(-1px)}
+.st-btn.ghost{border-color:#f3d9a4;color:#8a5b00;background:#fffaf0}
+.st-file{font-size:13px;color:var(--muted)}
+.st-file input{max-width:100%;font:inherit;font-size:13px}
+.st-status{margin:0 0 14px;color:var(--muted);font-size:13px}
+.st-warn{margin:0 0 16px;padding:12px 15px;border:1px solid #f1b9c2;border-radius:14px;background:#fff1f3;color:#a3213a;font-size:13px;line-height:1.5}
+.st-inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px}
+.st-rank td.bar{width:34%}
+.st-bar{height:10px;border-radius:6px;background:linear-gradient(90deg,#6157e8,#8b7cff)}
+.st-top{margin-top:18px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#efecff,#e4f6ee);border:1px solid #d4d0fb;color:var(--ink);font-size:14px;line-height:1.6}
+@media(max-width:520px){.st-inputs{grid-template-columns:1fr}}
+
+/* ===== PRICE TREND ===== */
+.pt-data{margin-top:16px;padding:14px 15px;border:1px dashed #d4d0fb;border-radius:16px;background:#fbfaff}
+.pt-data .pt-title{display:block;margin-bottom:10px;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.pt-box{margin-top:18px;text-align:left}
+.pt-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pt-chip{padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;font-size:13px;line-height:1.4;min-width:170px}
+.pt-chip small{display:block;color:var(--muted);font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.pt-chip strong{font-size:15px}
+.pt-chip.up{background:#fff1f3;border-color:#f1b9c2}.pt-chip.up strong{color:#c0314b}
+.pt-chip.down{background:#eaf9f2;border-color:#bfe8d4}.pt-chip.down strong{color:#0f8a5f}
+.pt-chip.flat strong{color:var(--muted)}
+.pt-spark{width:100%;max-width:420px;height:auto;display:block;margin:12px auto 0}
+.pt-note{margin:10px auto 0;max-width:520px;color:var(--muted);font-size:12px;line-height:1.55;text-align:center}
+
+.pt-sources{margin-top:16px;text-align:left;font-size:12.5px;color:var(--muted);line-height:1.65}
+.pt-sources summary{cursor:pointer;color:var(--ink);font-weight:700}
+.pt-sources ul{margin:8px 0;padding-left:18px}
+.pt-sources a{color:var(--accent);word-break:break-word}
+
+/* ===== BRAND MOBILES: past / present / future ===== */
+.fm-wrap{margin-top:22px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.fm-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:8px}
+.fm-head h4{font-family:'Space Grotesk',sans-serif;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
+.fm-head p{margin-top:3px;max-width:520px;color:var(--muted);font-size:12.5px;line-height:1.55}
+.fm-ctl{display:flex;flex-direction:column;gap:5px;font-size:11px;font-weight:800;letter-spacing:.04em;color:#3b4660}
+.fm-ctl select{padding:9px 12px;border:1px solid #dfe4ef;border-radius:10px;background:#fbfcff;color:var(--ink);font:inherit;font-size:13px;outline:none}
+.fm-ctl select:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px #8b7cff20}
+.fm-table{min-width:900px}
+.fm-table td:first-child{min-width:210px}
+.fm-table td:nth-child(2),.fm-table td:nth-child(3){min-width:110px}
+.fm-table td:nth-child(5){min-width:140px}
+.fm-table td{vertical-align:middle}
+.fm-table td strong{font-size:14px;color:var(--ink)}
+.fm-table td small{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:500;line-height:1.4}
+.fm-table td.fm-future{background:#f4f2ff}
+.fm-pill{display:inline-block;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap}
+.fm-pill.up{background:#fff1f3;color:#c0314b}.fm-pill.down{background:#eaf9f2;color:#0f8a5f}.fm-pill.flat{background:#f2f3f9;color:var(--muted)}
+.fm-note{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+</style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo" href="#home">
+      <span>FDS</span>
+      <small>Predictza</small>
+    </a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#data">Data</a>
+      <a href="#cleaning">Cleaning</a>
+      <a href="#model">Prediction</a>
+      <a href="#forecast">Forecast</a>
+      <a href="#states">States</a>
+      <a href="#ethics">Ethics</a>
+    </div>
+    <a class="nav-cta" href="#model">Check Price ↗</a>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
+
+    <div class="hero-content reveal">
+      <p class="eyebrow">
+        <span class="pulse-dot"></span>
+        FUNDAMENTALS OF DATA SCIENCE
+      </p>
+
+      <h1>Smart Mobile<br><span>Prediction</span></h1>
+
+      <p class="hero-description">
+        An end-to-end Data Science mini project exploring mobile
+        specifications, data preparation, visual insights and price estimation.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#data" class="btn primary">Explore Project <span>↘</span></a>
+        <a href="#model" class="btn secondary">Check Mobile Price</a>
+      </div>
+
+      <div class="hero-footnote">
+        <span class="tiny-line"></span>
+        COLLECT · CLEAN · ANALYZE · PREDICT
+      </div>
+    </div>
+
+    <div class="hero-card reveal">
+      <div class="phone-visual">
+        <div class="phone-camera"></div>
+        <div class="phone-screen">
+          <span>01</span>
+          <div class="phone-wave"></div>
+          <small>SMARTPHONE DATA</small>
+        </div>
+      </div>
+
+      <div class="hero-card-caption">
+        <div>
+          <p class="muted-label">PROJECT FOCUS</p>
+          <h3>From Data to Insight</h3>
+        </div>
+        <span class="round-arrow">↗</span>
+      </div>
+
+      <div class="mini-stats">
+        <div><strong>CSV</strong><small>Dataset</small></div>
+        <div><strong>EDA</strong><small>Analysis</small></div>
+        <div><strong>ML</strong><small>Prediction</small></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PROJECT WORKFLOW -->
+    <section class="section overview">
+      <div class="section-title reveal">
+        <p class="section-kicker">PROJECT WORKFLOW</p>
+        <h2>From Raw Data to Prediction</h2>
+        <p class="section-description">
+          A clear workflow for completing the Data Science mini project.
+        </p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-card reveal">
+          <span class="step-number">01</span>
+          <div class="step-icon">↘</div>
+          <h3>Data Collection</h3>
+          <p>Gather mobile specifications and price records from a documented source.</p>
+          <span class="step-tag">RAW DATA</span>
+        </article>
+
+        <article class="workflow-card reveal">
+          <span class="step-number">02</span>
+          <div class="step-icon">⌁</div>
+          <h3>Data Cleaning</h3>
+          <p>Inspect missing values, duplicates, data types and unusual values.</p>
+          <span class="step-tag">PREPROCESSING</span>
+        </article>
+
+        <article class="workflow-card reveal">
+          <span class="step-number">03</span>
+          <div class="step-icon">◫</div>
+          <h3>EDA & Insights</h3>
+          <p>Use descriptive statistics and visual analysis to explore patterns.</p>
+          <span class="step-tag">EXPLORATION</span>
+        </article>
+
+        <article class="workflow-card reveal">
+          <span class="step-number">04</span>
+          <div class="step-icon">✳</div>
+          <h3>ML Modeling</h3>
+          <p>Train and evaluate a model before connecting it to the website.</p>
+          <span class="step-tag">PREDICTION</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- DATA COLLECTION -->
+    <section id="data" class="section section-alt">
+      <div class="section-title reveal">
+        <p class="section-kicker">01 · DATA COLLECTION</p>
+        <h2>Understanding the Dataset</h2>
+        <p class="section-description">
+          Example records showing the kind of fields your final dataset may contain.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card reveal">
+          <span class="stat-label">DATA SOURCE</span>
+          <strong>CSV</strong>
+          <p>Structured data file</p>
+        </article>
+
+        <article class="stat-card reveal">
+          <span class="stat-label">FEATURES</span>
+          <strong>20+</strong>
+          <p>Potential mobile attributes</p>
+        </article>
+
+        <article class="stat-card reveal">
+          <span class="stat-label">TARGET</span>
+          <strong>Price</strong>
+          <p>Value to estimate</p>
+        </article>
+
+        <article class="stat-card reveal">
+          <span class="stat-label">PURPOSE</span>
+          <strong>Insights</strong>
+          <p>Understand price patterns</p>
+        </article>
+      </div>
+
+      <div class="table-container reveal">
+        <div class="table-header">
+          <div>
+            <h3>Dataset Preview</h3>
+            <p>India launch prices in ₹. Sources are listed in the price checker below.</p>
+          </div>
+          <span class="pill">LAUNCH MRP</span>
+        </div>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>RAM</th>
+                <th>Storage</th>
+                <th>Battery</th>
+                <th>Camera</th>
+                <th>Launch MRP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td><td>iPhone 16</td><td>8 GB</td>
+                <td>128 GB</td><td>—</td><td>48 MP</td><td>₹79,900</td>
+              </tr>
+              <tr>
+                <td>Samsung</td><td>Galaxy S25</td><td>12 GB</td>
+                <td>256 GB</td><td>4000 mAh</td><td>50 MP</td><td>₹80,999</td>
+              </tr>
+              <tr>
+                <td>OnePlus</td><td>OnePlus 13</td><td>12 GB</td>
+                <td>256 GB</td><td>6000 mAh</td><td>50 MP</td><td>₹69,999</td>
+              </tr>
+              <tr>
+                <td>Xiaomi</td><td>Xiaomi 15</td><td>12 GB</td>
+                <td>512 GB</td><td>5240 mAh</td><td>50 MP</td><td>₹64,999</td>
+              </tr>
+              <tr>
+                <td>Realme</td><td>Realme GT 7</td><td>12 GB</td>
+                <td>256 GB</td><td>7000 mAh</td><td>50 MP</td><td>₹42,999</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="fine-print">
+          Prices are the official India launch MRP (including GST). Shop prices change with offers and sales, so they can differ today.
+        </p>
+      </div>
+    </section>
+
+    <!-- DATA CLEANING -->
+    <section id="cleaning" class="section">
+      <div class="section-title reveal">
+        <p class="section-kicker">02 · DATA CLEANING</p>
+        <h2>Preparing Reliable Data</h2>
+        <p class="section-description">
+          Cleaning decisions should be based on what is actually found in your dataset.
+        </p>
+      </div>
+
+      <div class="cleaning-grid">
+        <article class="clean-card reveal">
+          <span class="check-icon">✓</span>
+          <h3>Missing Values</h3>
+          <p>Measure missing data and choose suitable handling methods.</p>
+          <span class="status-label">CHECK REQUIRED</span>
+        </article>
+
+        <article class="clean-card reveal">
+          <span class="check-icon">✓</span>
+          <h3>Duplicate Records</h3>
+          <p>Find repeated rows and remove only confirmed duplicates.</p>
+          <span class="status-label">CHECK REQUIRED</span>
+        </article>
+
+        <article class="clean-card reveal">
+          <span class="check-icon">✓</span>
+          <h3>Data Types</h3>
+          <p>Convert columns into appropriate numerical or categorical types.</p>
+          <span class="status-label">CHECK REQUIRED</span>
+        </article>
+
+        <article class="clean-card reveal">
+          <span class="check-icon">✓</span>
+          <h3>Outliers</h3>
+          <p>Investigate unusual values instead of removing them automatically.</p>
+          <span class="status-label">CHECK REQUIRED</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- MOBILE PRICE CHECKER -->
+    <section id="model" class="section prediction-section">
+      <div class="section-title reveal">
+        <p class="section-kicker">03 · MOBILE PRICE CHECKER</p>
+        <h2>Find a Mobile Price</h2>
+        <p class="section-description">
+          Choose a phone model to see its official India launch price in rupees (₹), and whether its price has gone up or down since.
+        </p>
+      </div>
+
+      <div class="prediction-box reveal">
+        <div class="prediction-top">
+          <div>
+            <p class="muted-label">DEVICE DETAILS</p>
+            <h3>Select Your Mobile</h3>
+            <p class="form-help">
+              Prices are official India launch MRPs in ₹, looked up from a table. This is not a trained ML model.
+            </p>
+          </div>
+          <div class="prediction-symbol">⌁</div>
+        </div>
+
+        <div class="inputs">
+          <div class="input-group">
+            <label for="brand">Brand</label>
+            <select id="brand">
+              <option value="">Select Brand</option>
+              <option value="apple">Apple</option>
+              <option value="samsung">Samsung</option>
+              <option value="oneplus">OnePlus</option>
+              <option value="xiaomi">Xiaomi</option>
+              <option value="realme">Realme</option>
+              <option value="vivo">vivo</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="modelName">Model</label>
+            <select id="modelName" disabled>
+              <option value="">Select Model</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="storage">Storage</label>
+            <select id="storage" disabled>
+              <option value="">Select Storage</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="condition">Condition</label>
+            <select id="condition">
+              <option value="new">Brand New</option>
+              <option value="used">Used (rough estimate)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="predict-btn" id="predictButton" type="button">
+          Check Price <span>↗</span>
+        </button>
+
+        <div id="result" class="result" aria-live="polite">
+          <div id="phoneStage" class="phone-stage" role="img" aria-label="3D view of the selected mobile">
+            <div id="phone3d" class="phone-3d"></div>
+            <img id="phonePhoto" class="phone-photo" alt="">
+            <div class="phone-shadow"></div>
+          </div>
+          <p id="phoneHint" class="phone-hint">DRAG TO ROTATE · 3D VIEW</p>
+          <div class="result-symbol">₹</div>
+          <p class="muted-label">PRICE RESULT</p>
+          <h3>Your price appears here</h3>
+          <p id="predictionText">
+            Select brand, model and storage to continue.
+          </p>
+          <div id="priceTrend" class="pt-box"></div>
+          <details class="pt-sources">
+            <summary>Price sources (India, ₹)</summary>
+            <ul>
+              <li>iPhone 17 series: <a href="https://www.croma.com/unboxed/iphone-17-iphone-17-pro-prices-in-india" target="_blank" rel="noopener">Croma</a></li>
+              <li>iPhone 16 series: <a href="https://www.croma.com/unboxed/iphone-16-prices-in-india" target="_blank" rel="noopener">Croma</a></li>
+              <li>iPhone 15 series: <a href="https://www.businesstoday.in/amp/technology/news/story/apple-iphone-15-iphone-15-pro-india-price-availability-features-all-you-need-to-know-398146-2023-09-13" target="_blank" rel="noopener">Business Today</a></li>
+              <li>Galaxy S25 series: <a href="https://www.fonearena.com/blog/444701/samsung-galaxy-s25-s25-plus-s25-ultra-india-price.html" target="_blank" rel="noopener">FoneArena</a>; price increase: <a href="https://www.91mobiles.com/hub/samsung-galaxy-s25-price-india-hiked-up-to-rs-12000/amp/" target="_blank" rel="noopener">91mobiles</a></li>
+              <li>Galaxy A56 / A36: <a href="https://www.etvbharat.com/en/!technology/samsung-galaxy-a56-5g-galaxy-a36-5g-galaxy-a26-5g-india-launch-prices-specifications-features-enn25030301688" target="_blank" rel="noopener">ETV Bharat</a>; price cut: <a href="https://www.notebookcheck.net/Samsung-announces-Galaxy-A36-and-Galaxy-A56-limited-editions-slashes-price-too.1124365.0.html" target="_blank" rel="noopener">Notebookcheck</a></li>
+              <li>OnePlus 13: <a href="https://m.gsmarena.com/oneplus_13_goes_on_open_sale_in_india_with_launch_offers-amp-66040.php" target="_blank" rel="noopener">GSMArena</a>; 13R: <a href="https://www.businesstoday.in/technology/news/story/oneplus-13-series-launched-in-india-check-price-details-offers-and-specs-of-oneplus-13-oneplus-13r-459951-2025-01-08" target="_blank" rel="noopener">Business Today</a>; Nord 5: <a href="https://telecomtalk.info/?p=996854" target="_blank" rel="noopener">TelecomTalk</a></li>
+              <li>Xiaomi 15: <a href="https://www.fonearena.com/blog/?p=448475" target="_blank" rel="noopener">FoneArena</a>; Redmi Note 14 Pro / Pro+: <a href="https://businessinsider.in/tech/mobile/news/redmi-note-14-pro-and-redmi-note-14-pro-launched-in-india-starting-at-24999/articleshow/116134415.cms" target="_blank" rel="noopener">Business Insider India</a></li>
+              <li>Realme GT 7: <a href="https://m.gsmarena.com/realme_gt_7_gt_7t_india_price_sale_date-news-68031.php" target="_blank" rel="noopener">GSMArena</a>; 14 Pro: <a href="https://m.gsmarena.com/realme_14_pro_14_pro_plus_india_price_sale_date-news-66221.php" target="_blank" rel="noopener">GSMArena</a>; P4: <a href="https://telecomtalk.info/?p=998777" target="_blank" rel="noopener">TelecomTalk</a></li>
+            </ul>
+            <p>Where a storage size was sold with more than one RAM option, the base-RAM price is shown. Redmi Note 14 Pro 256GB is left out because sources disagree on its price.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SALES FORECAST -->
+    <section id="forecast" class="section forecast-section">
+      <div class="section-title reveal">
+        <p class="section-kicker">04 · SALES FORECAST</p>
+        <h2>Predict Brand Sales in India</h2>
+        <p class="section-description">
+          Yearly smartphone shipments of each brand in India, with a trend forecast for the coming years.
+        </p>
+      </div>
+
+      <div class="prediction-box forecast-box reveal">
+        <div class="data-banner" role="note">
+          <b>REAL DATA</b>
+          <span>Brand-level India shipments (million units) taken from Canalys, Omdia and IDC press releases.
+          Model-wise, state-wise and city-wise unit sales are only sold in paid trackers, so they are not included.</span>
+        </div>
+
+        <div class="fc-inputs">
+          <div class="input-group">
+            <label for="fcBrand">Brand</label>
+            <select id="fcBrand">
+              <option value="">Select Brand</option>
+              <option value="vivo">vivo</option>
+              <option value="samsung">Samsung</option>
+              <option value="xiaomi">Xiaomi (incl. POCO)</option>
+              <option value="realme">Realme</option>
+              <option value="apple">Apple</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="predict-btn" id="fcButton" type="button">
+          Forecast Sales <span>↗</span>
+        </button>
+
+        <div id="fcOutput" aria-live="polite">
+          <p class="fc-empty">Select a brand, then press Forecast.</p>
+        </div>
+
+        <div class="fc-outlook">
+          <strong>Reality check for 2026:</strong> the trend line cannot see sudden shocks. IDC expects India's 2026
+          shipments to fall to roughly 128–130 million (from about 152 million in 2025) and Counterpoint expects a
+          13% fall, because memory chip prices have shot up. Treat the 2026 forecast as optimistic.
+        </div>
+
+        <div class="fc-sources">
+          <h4>Dataset used (million units)</h4>
+          <div class="fc-scroll"><table class="fc-table" id="fcDataset"></table></div>
+          <h4 style="margin-top:18px">Sources</h4>
+          <ul>
+            <li>2022: Canalys via GSMArena – <a href="https://m.gsmarena.com/canalys_samsung_takes_first_place_in_india_during_q4_xiaomi_still_on_top_in_full_2022-amp-57258.php" target="_blank" rel="noopener">full-year 2022 report</a></li>
+            <li>2023: <a href="https://canalys.com/newsroom/india-smartphone-shipments-Q4-2023" target="_blank" rel="noopener">Canalys India Q4 2023 / full year</a></li>
+            <li>2024: <a href="https://canalys-forum-emea.canalys.com/newsroom/india-smartphone-market-q4-2024" target="_blank" rel="noopener">Canalys India Q4 2024 / full year</a></li>
+            <li>2025: Omdia – <a href="https://www.gsmarena.com/vivo_led_indias_smartphone_market_in_2025_with_doubledigit_shipment_growth-news-71181.php" target="_blank" rel="noopener">brand figures</a> and <a href="https://omdia.tech.informa.com/pr/2026/jan/indias-smartphone-shipments-fell-by-1percent-in-2025-amid-softer-demand-and-cost-pressures-vivo-remains-market-leader" target="_blank" rel="noopener">press release</a></li>
+            <li>Apple: IDC – <a href="https://telecomlive.in/web/?p=904467" target="_blank" rel="noopener">2024</a> and <a href="https://www.91mobiles.com/updates/india-smartphone-growth-flat-q4-2025-idc/" target="_blank" rel="noopener">2025</a></li>
+            <li>2026 outlook: <a href="https://www.freepressjournal.in/tech/indias-smartphone-shipments-set-to-fall-over-15-in-h2-2026-as-memory-cost-surge-reshapes-the-market" target="_blank" rel="noopener">IDC and Counterpoint projections</a></li>
+          </ul>
+          <p style="margin:10px 0 0">Definitions differ slightly between firms (vivo excludes iQOO, Xiaomi includes POCO, OnePlus is counted inside OPPO),
+          so compare brands within one year rather than treating the series as one exact dataset.
+          OnePlus has no separate published unit figure, and OPPO's definition changed between years, so neither is included.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- STATE-WISE FORECAST -->
+    <section id="states" class="section forecast-section">
+      <div class="section-title reveal">
+        <p class="section-kicker">05 · STATE-WISE DEMAND</p>
+        <h2>Which State Needs More Phones Next Year?</h2>
+        <p class="section-description">
+          Load your state-wise sales file, pick a brand, and see the forecast for each state and a ranking of states by expected demand.
+        </p>
+      </div>
+
+      <div class="prediction-box forecast-box reveal">
+        <div class="data-banner" role="note">
+          <b>YOUR DATA</b>
+          <span>No real state-wise sales data is bundled with this page. Upload a CSV with the columns
+          <code>state,brand,year,units</code> (units = phones sold in that year). Everything is calculated in your browser, nothing is uploaded anywhere.</span>
+        </div>
+
+        <div class="st-actions">
+          <label class="st-file">Upload CSV:
+            <input type="file" id="stFile" accept=".csv,text/csv">
+          </label>
+          <button type="button" class="st-btn" id="stTemplate">Download CSV template</button>
+          <button type="button" class="st-btn ghost" id="stDemo">Load demo data (fake)</button>
+        </div>
+        <p class="st-status" id="stStatus">No data loaded yet.</p>
+        <div class="st-warn" id="stDemoWarn" hidden>
+          <strong>DEMO DATA:</strong> these numbers are randomly generated only to test the page. They are not real sales figures, so do not present them as results.
+        </div>
+
+        <div class="st-inputs">
+          <div class="input-group">
+            <label for="stState">State</label>
+            <select id="stState" disabled><option value="">Select State</option></select>
+          </div>
+          <div class="input-group">
+            <label for="stBrand">Brand</label>
+            <select id="stBrand" disabled><option value="">Select Brand</option></select>
+          </div>
+        </div>
+
+        <button class="predict-btn" id="stButton" type="button">
+          Forecast Next Year <span>↗</span>
+        </button>
+
+        <div id="stOutput" aria-live="polite">
+          <p class="fc-empty">Load a CSV (or the demo data) to begin.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODEL EVALUATION -->
+    <section class="section section-alt">
+      <div class="section-title reveal">
+        <p class="section-kicker">06 · MODEL EVALUATION</p>
+        <h2>Measure Model Performance</h2>
+        <p class="section-description">
+          For price prediction, use regression metrics computed from your trained model.
+        </p>
+      </div>
+
+      <div class="metrics-grid">
+        <article class="metric-card reveal">
+          <span>MAE</span>
+          <h3>—</h3>
+          <p>Mean Absolute Error</p>
+        </article>
+
+        <article class="metric-card reveal">
+          <span>RMSE</span>
+          <h3>—</h3>
+          <p>Root Mean Squared Error</p>
+        </article>
+
+        <article class="metric-card reveal">
+          <span>R² SCORE</span>
+          <h3>—</h3>
+          <p>Explained variance indicator</p>
+        </article>
+      </div>
+
+      <p class="fine-print reveal">
+        Metrics are left blank until a real model is trained and evaluated.
+        Accuracy, precision, recall and F1 are generally classification metrics,
+        not the primary metrics for continuous price prediction.
+      </p>
+    </section>
+
+    <!-- ETHICAL REVIEW -->
+    <section id="ethics" class="section">
+      <div class="section-title reveal">
+        <p class="section-kicker">07 · ETHICAL REVIEW</p>
+        <h2>Responsible Data Science</h2>
+        <p class="section-description">
+          Document limitations and make the results transparent to users.
+        </p>
+      </div>
+
+      <div class="ethics-grid">
+        <article class="ethic-card reveal">
+          <span>01</span>
+          <h3>Privacy</h3>
+          <p>Avoid collecting personal information that is not needed for price estimation.</p>
+        </article>
+
+        <article class="ethic-card reveal">
+          <span>02</span>
+          <h3>Representation</h3>
+          <p>Check whether brands, price ranges and device types are adequately represented.</p>
+        </article>
+
+        <article class="ethic-card reveal">
+          <span>03</span>
+          <h3>Transparency</h3>
+          <p>Show data sources, collection dates, assumptions and model limitations.</p>
+        </article>
+
+        <article class="ethic-card reveal">
+          <span>04</span>
+          <h3>Responsible Use</h3>
+          <p>Explain that estimates are not guaranteed market prices or purchase advice.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="section conclusion-section">
+      <div class="conclusion-panel reveal">
+        <p class="section-kicker">PROJECT SUMMARY</p>
+        <h2>From Data to Insight.</h2>
+        <p>
+          This project can demonstrate the end-to-end workflow: collect raw data,
+          clean and explore it, visualize findings, train a suitable model,
+          evaluate its errors and review ethical considerations.
+        </p>
+        <a class="btn primary" href="#home">Back to Top ↑</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a class="logo footer-logo" href="#home">
+      <span>FDS</span><small>Predictza</small>
+    </a>
+    <p>End-to-End Data Science Mini Project</p>
+    <small>HTML · CSS · JavaScript</small>
+  </footer>
+
+  <script>
+/* ==================================
+   MOBILE PRICE DATA
+   Official India launch prices (MRP, incl. GST) in rupees (₹).
+   For a storage size sold with several RAM options, the base-RAM price is used.
+================================== */
+
+const mobileData = {
+  apple: {
+    "iPhone 17":     { "256GB": 82900, "512GB": 102900 },
+    "iPhone 17 Pro": { "256GB": 134900, "512GB": 154900, "1TB": 174900 },
+    "iPhone 16":     { "128GB": 79900, "256GB": 89900, "512GB": 109900 },
+    "iPhone 16 Pro": { "128GB": 119900, "256GB": 129900, "512GB": 149900, "1TB": 169900 },
+    "iPhone 15":     { "128GB": 79900, "256GB": 89900, "512GB": 109900 },
+    "iPhone 15 Pro": { "128GB": 134900, "256GB": 144900, "512GB": 164900, "1TB": 184900 }
+  },
+  samsung: {
+    "Galaxy S25":       { "256GB": 80999, "512GB": 92999 },
+    "Galaxy S25 Ultra": { "256GB": 129999, "512GB": 141999, "1TB": 165999 },
+    "Galaxy A56":       { "128GB": 41999, "256GB": 44999 },
+    "Galaxy A36":       { "128GB": 32999, "256GB": 35999 }
+  },
+  oneplus: {
+    "OnePlus 13":     { "256GB": 69999, "512GB": 76999, "1TB": 89999 },
+    "OnePlus 13R":    { "256GB": 42999 },
+    "OnePlus Nord 5": { "256GB": 31999, "512GB": 37999 }
+  },
+  xiaomi: {
+    "Xiaomi 15":          { "512GB": 64999 },
+    "Redmi Note 14 Pro":  { "128GB": 24999 },
+    "Redmi Note 14 Pro+": { "128GB": 30999, "256GB": 32999, "512GB": 35999 }
+  },
+  realme: {
+    "Realme GT 7":   { "256GB": 39999, "512GB": 46999 },
+    "Realme 14 Pro": { "128GB": 24999, "256GB": 26999 },
+    "Realme P4":     { "128GB": 19499, "256GB": 21499 }
+  },
+  vivo: {
+    "vivo X300 Ultra": { "512GB": 159999 },
+    "vivo X300 Pro":   { "512GB": 109999 },
+    "vivo X300":       { "256GB": 75999, "512GB": 81999 },
+    "vivo X300 FE":    { "256GB": 79999, "512GB": 89999 },
+    "vivo V70 Elite":  { "256GB": 54999 }
+  }
+};
+
+
+/* ==================================
+   HTML ELEMENTS
+================================== */
+
+const brandSelect = document.getElementById("brand");
+const modelSelect = document.getElementById("modelName");
+const storageSelect = document.getElementById("storage");
+const conditionSelect = document.getElementById("condition");
+
+const result = document.getElementById("result");
+const predictionText = document.getElementById("predictionText");
+const predictButton = document.getElementById("predictButton");
+
+
+/* ==================================
+   RESET DROPDOWN
+================================== */
+
+function resetSelect(select, placeholder) {
+  select.replaceChildren(new Option(placeholder, ""));
+}
+
+
+/* ==================================
+   UPDATE MODEL OPTIONS
+================================== */
+
+function updateModels() {
+  const brand = brandSelect.value;
+
+  resetSelect(modelSelect, "Select Model");
+  resetSelect(storageSelect, "Select Storage");
+
+  modelSelect.disabled = !brand;
+  storageSelect.disabled = true;
+
+  if (!brand || !mobileData[brand]) {
+    return;
+  }
+
+  Object.keys(mobileData[brand]).forEach(function(model) {
+    modelSelect.add(new Option(model, model));
+  });
+}
+
+
+/* ==================================
+   UPDATE STORAGE OPTIONS
+================================== */
+
+function updateStorage() {
+  const brand = brandSelect.value;
+  const model = modelSelect.value;
+
+  resetSelect(storageSelect, "Select Storage");
+
+  storageSelect.disabled = !(brand && model);
+
+  if (!brand || !model) {
+    return;
+  }
+
+  Object.keys(mobileData[brand][model]).forEach(function(storage) {
+    storageSelect.add(new Option(storage, storage));
+  });
+}
+
+
+/* ==================================
+   RESULT ANIMATION
+================================== */
+
+function animateResult() {
+  result.classList.remove("animate-result");
+
+  // Restart the CSS animation
+  void result.offsetWidth;
+
+  result.classList.add("animate-result");
+}
+
+
+/* ==================================
+   MOBILE PRICE CHECKER
+================================== */
+
+function predictPrice() {
+  const brand = brandSelect.value;
+  const model = modelSelect.value;
+  const storage = storageSelect.value;
+
+  // Validate selections
+  if (!brand || !model || !storage) {
+    result.querySelector("h3").textContent =
+      "Complete Your Selection";
+
+    predictionText.textContent =
+      "Please select brand, model and storage.";
+
+    animateResult();
+    return;
+  }
+
+  // Get the stored launch price
+  const referencePrice =
+    mobileData[brand][model][storage];
+
+  const isUsed = conditionSelect.value === "used";
+
+  // Illustrative used-phone estimate only
+  const displayedPrice = isUsed
+    ? Math.round(referencePrice * 0.70)
+    : referencePrice;
+
+  // Format in Indian Rupees
+  const formattedPrice = new Intl.NumberFormat(
+    "en-IN",
+    {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0
+    }
+  ).format(displayedPrice);
+
+  // Update result heading
+  result.querySelector("h3").textContent = model;
+
+  // Display result safely
+  predictionText.replaceChildren();
+
+  const details = document.createElement("span");
+
+  details.textContent =
+    `${storage} · ${
+      isUsed
+        ? "Used phone rough estimate"
+        : "India launch price (MRP)"
+    }: `;
+
+  const price = document.createElement("strong");
+  price.textContent = formattedPrice;
+
+  predictionText.append(details, price);
+
+  // Show animation
+  animateResult();
+}
+
+
+
+/* ==================================
+   3D PHONE VIEWER (realistic CSS 3D)
+   Optional real photos: put them in a
+   "phones" folder, e.g.
+   phones/iphone-16-front.png
+   phones/iphone-16-back.png
+================================== */
+
+const phoneStage = document.getElementById("phoneStage");
+const phone3d = document.getElementById("phone3d");
+const phoneHint = document.getElementById("phoneHint");
+
+let phoneAngle = -25;
+let phoneDragging = false;
+let phoneLastX = 0;
+let phoneFrame = null;
+let phoneToken = 0;
+
+const reduceMotion =
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const phoneThemes = {
+  apple: {
+    label: "Apple", module: "square", notch: "island",
+    lenses: 2, bump: /Pro/, action: true,
+    palettes: [
+      { back: "linear-gradient(150deg,#e6def7,#b2a2de)", frame: "#cbbfe9",
+        wall: "linear-gradient(160deg,#d9d1f7,#8a7be8 50%,#4b3fb0)" },
+      { back: "linear-gradient(150deg,#3d4256,#12141d)", frame: "#575d72",
+        wall: "linear-gradient(160deg,#6dd5ed,#2193b0 55%,#12263f)" },
+      { back: "linear-gradient(150deg,#f4dccd,#c79a82)", frame: "#d9baa6",
+        wall: "linear-gradient(160deg,#f6d365,#fda085 55%,#7b3f6e)" }
+    ]
+  },
+  samsung: {
+    label: "Samsung", module: "column", notch: "punch",
+    lenses: 3, bump: /Ultra/,
+    palettes: [
+      { back: "linear-gradient(150deg,#5a4f9c,#1d1a3f)", frame: "#3c3a55",
+        wall: "linear-gradient(160deg,#a18cd1,#fbc2eb 45%,#3b2f7a)" },
+      { back: "linear-gradient(150deg,#bfe9e0,#5fb3a5)", frame: "#8fc7bd",
+        wall: "linear-gradient(160deg,#43e97b,#38f9d7 45%,#0b4f55)" },
+      { back: "linear-gradient(150deg,#c8d2e6,#7d8cab)", frame: "#a2adc4",
+        wall: "linear-gradient(160deg,#89f7fe,#66a6ff 55%,#1b2a6b)" }
+    ]
+  },
+  oneplus: {
+    label: "OnePlus", module: "circle", notch: "punch",
+    lenses: 3, bump: /$^/,
+    palettes: [
+      { back: "linear-gradient(150deg,#1d2b2a,#050808)", frame: "#2f3d3c",
+        wall: "linear-gradient(160deg,#f5576c,#f093fb 45%,#2b1a4f)" },
+      { back: "linear-gradient(150deg,#7fd3b0,#1f7a62)", frame: "#4aa586",
+        wall: "linear-gradient(160deg,#00c6ff,#0072ff 55%,#0a1a4a)" },
+      { back: "linear-gradient(150deg,#8fa6d6,#3b4f87)", frame: "#6579ac",
+        wall: "linear-gradient(160deg,#ff9966,#ff5e62 50%,#3a1a4f)" }
+    ]
+  },
+  xiaomi: {
+    label: "Xiaomi", module: "squircle", notch: "punch",
+    lenses: 3, bump: /\+/,
+    palettes: [
+      { back: "linear-gradient(150deg,#2a2d38,#0b0c10)", frame: "#40434f",
+        wall: "linear-gradient(160deg,#ffb347,#ffcc33 40%,#b34700)" },
+      { back: "linear-gradient(150deg,#f5f6fa,#bfc6d8)", frame: "#d3d8e6",
+        wall: "linear-gradient(160deg,#c471f5,#fa71cd 45%,#34246b)" },
+      { back: "linear-gradient(150deg,#7ec8a4,#2e7d5b)", frame: "#52a47f",
+        wall: "linear-gradient(160deg,#11998e,#38ef7d 50%,#073b3a)" }
+    ]
+  },
+  realme: {
+    label: "realme", module: "pill", notch: "punch",
+    lenses: 2, bump: /Pro|GT/,
+    palettes: [
+      { back: "linear-gradient(150deg,#ffe066,#e0a800)", frame: "#e8bd2e",
+        wall: "linear-gradient(160deg,#f7971e,#ffd200 45%,#7a3b00)" },
+      { back: "linear-gradient(150deg,#b9a2f0,#6d4fc2)", frame: "#8e74d6",
+        wall: "linear-gradient(160deg,#a18cd1,#fbc2eb 45%,#2d1b69)" },
+      { back: "linear-gradient(150deg,#2c3a47,#0f161d)", frame: "#46556a",
+        wall: "linear-gradient(160deg,#4facfe,#00f2fe 45%,#0b2a4f)" }
+    ]
+  }
+};
+
+function makeEl(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text) node.textContent = text;
+  return node;
+}
+
+function sidePlate(side, top, height, z) {
+  const b = makeEl("div", "p3-btn");
+  b.style.top = top + "px";
+  b.style.height = height + "px";
+  const rot = side === "right" ? 90 : -90;
+  b.style.transform = `rotateY(${rot}deg) translateZ(${z}px)`;
+  return b;
+}
+
+function addSideButtons(theme) {
+  // Each button is two thin plates so it shows some thickness
+  [76, 77.5].forEach(function(z) {
+    phone3d.append(sidePlate("right", 98, 54, z));
+    if (theme.action) {
+      phone3d.append(sidePlate("right", 190, 26, z));
+      phone3d.append(sidePlate("left", 58, 18, z));
+      phone3d.append(sidePlate("left", 98, 32, z));
+      phone3d.append(sidePlate("left", 138, 32, z));
+    } else {
+      phone3d.append(sidePlate("right", 168, 40, z));
+    }
+  });
+}
+
+function buildLockScreen(theme, look) {
+  const screen = makeEl("div", "p3-screen");
+  screen.style.background = look.wall;
+
+  const now = new Date();
+  const status = makeEl("div", "p3-status");
+  const left = makeEl("span", "", "5G");
+  const right = makeEl("span");
+  const sig = makeEl("span", "p3-sig");
+  [3, 4, 5, 7].forEach(function(h) {
+    const bar = document.createElement("i");
+    bar.style.height = h + "px";
+    sig.append(bar);
+  });
+  right.append(sig, makeEl("span", "p3-bat"));
+  status.append(left, right);
+
+  screen.append(
+    makeEl("span", theme.notch === "island" ? "p3-island" : "p3-punch"),
+    status,
+    makeEl("div", "p3-date",
+      now.toLocaleDateString("en-IN",
+        { weekday: "long", day: "numeric", month: "long" })),
+    makeEl("div", "p3-time",
+      now.toLocaleTimeString("en-IN",
+        { hour: "numeric", minute: "2-digit", hour12: false })),
+    (function() { const q = makeEl("span", "p3-quick"); q.style.left = "14px"; return q; })(),
+    (function() { const q = makeEl("span", "p3-quick"); q.style.right = "14px"; return q; })(),
+    makeEl("span", "p3-bar")
+  );
+  return screen;
+}
+
+function phoneSlug(model) {
+  return model.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function buildCamera(theme, lensCount, model) {
+  let type = theme.module;
+  // iPhone 16 / 17 (base): two lenses stacked in a vertical pill
+  if (theme.label === "Apple" && /^iPhone 1[67]$/.test(model)) {
+    type = "pillv";
+  }
+  const group = makeEl("div", "p3-camera");
+  let w, h, top, left;
+
+  if (type === "column") {
+    w = 28; h = lensCount * 28 + (lensCount - 1) * 10;
+    top = 16; left = 16;
+    const wrap = makeEl("div", "p3-column-wrap");
+    for (let i = 0; i < lensCount; i++) {
+      const lens = makeEl("span", "p3-lens");
+      lens.style.transform = "translateZ(2px)";
+      wrap.append(lens);
+    }
+    const flash = makeEl("span", "p3-flash");
+    flash.style.position = "absolute";
+    flash.style.left = "38px";
+    flash.style.top = "4px";
+    group.append(wrap, flash);
+  } else {
+    const sizes = {
+      square: [72, 72, 14, 14],
+      squircle: [80, 80, 14, 14],
+      circle: [84, 84, 14, 14]
+    };
+    if (type === "pill") {
+      w = 24 + lensCount * 24 + 9 + lensCount * 8;
+      h = 44; top = 16; left = (150 - w) / 2;
+    } else if (type === "pillv") {
+      w = 42; h = 82; top = 14; left = 14;
+    } else {
+      [w, h, top, left] = sizes[type];
+    }
+
+    const cls = "p3-" + type + (lensCount === 3 && type !== "pillv" ? " p3-three" : "");
+    const shadow = makeEl("div", "p3-cshadow");
+    shadow.style.borderRadius = type === "circle" ? "50%" : "22px";
+    group.append(shadow);
+
+    [1, 2].forEach(function(z) {
+      const plate = makeEl("div", "p3-plate " + cls);
+      plate.style.transform = `translateZ(${z}px)`;
+      group.append(plate);
+    });
+
+    if (type === "pillv") lensCount = 2;
+    const mod = makeEl("div", "p3-module " + cls);
+    mod.style.transform = "translateZ(3px)";
+    for (let i = 0; i < lensCount; i++) {
+      mod.append(makeEl("span", "p3-lens"));
+    }
+    if (!(type === "squircle" && lensCount >= 4)) {
+      mod.append(makeEl("span", "p3-flash"));
+    }
+    group.append(mod);
+  }
+
+  group.style.width = w + "px";
+  group.style.height = h + "px";
+  group.style.top = top + "px";
+  group.style.left = left + "px";
+  return group;
+}
+
+const phonePhoto = document.getElementById("phonePhoto");
+
+function tryHeroPhoto(model, token) {
+  const src = `phones/${phoneSlug(model)}.png`;
+  const img = new Image();
+  img.onload = function() {
+    if (token !== phoneToken) return;
+    phonePhoto.src = src;
+    phonePhoto.alt = model;
+    phoneStage.classList.add("photo-mode");
+    phoneHint.textContent = "PRODUCT PHOTO";
+  };
+  img.src = src;
+}
+
+function tryPhotos(model, front, back, token) {
+  const slug = phoneSlug(model);
+
+  [["front", front], ["back", back]].forEach(function(pair) {
+    const img = new Image();
+    img.onload = function() {
+      if (token !== phoneToken) return;
+      pair[1].classList.add("has-photo");
+      pair[1].style.backgroundImage =
+        `url("phones/${slug}-${pair[0]}.png")`;
+    };
+    img.src = `phones/${slug}-${pair[0]}.png`;
+  });
+}
+
+function showPhone(brand, model) {
+  if (!brand || !model || !phoneThemes[brand]) {
+    hidePhone();
+    return;
+  }
+
+  const token = ++phoneToken;
+  const theme = phoneThemes[brand];
+  const index = Object.keys(mobileData[brand]).indexOf(model);
+  const look = theme.palettes[Math.max(index, 0) % theme.palettes.length];
+  const lensCount = theme.lenses + (theme.bump.test(model) ? 1 : 0);
+
+  phone3d.replaceChildren();
+  phone3d.style.setProperty("--frame", look.frame);
+  phone3d.style.setProperty("--back", look.back);
+
+  // Metal frame with rounded thickness (bright centre, darker edges)
+  const layers = 9;
+  for (let i = 0; i < layers; i++) {
+    const t = (i - (layers - 1) / 2) / ((layers - 1) / 2);
+    const layer = makeEl("div", "phone-layer");
+    layer.style.transform = `translateZ(${(i - 4) * 2}px)`;
+    layer.style.filter =
+      `brightness(${(0.62 + 0.62 * (1 - t * t)).toFixed(2)})`;
+    phone3d.append(layer);
+  }
+
+  addSideButtons(theme);
+
+  const front = makeEl("div", "phone-front");
+  front.append(buildLockScreen(theme, look), makeEl("div", "p3-glass"));
+
+  const back = makeEl("div", "phone-back");
+  back.append(
+    buildCamera(theme, lensCount, model),
+    makeEl("div", "p3-brand", theme.label),
+    makeEl("div", "p3-glass")
+  );
+
+  phone3d.append(front, back);
+
+  phoneStage.setAttribute("aria-label", `3D view of ${model}`);
+  phoneStage.classList.remove("photo-mode");
+  phoneHint.textContent = "DRAG TO ROTATE · 3D VIEW";
+  phoneStage.classList.add("is-visible");
+  phoneHint.classList.add("is-visible");
+  tryPhotos(model, front, back, token);
+  tryHeroPhoto(model, token);
+  startPhoneSpin();
+}
+
+function hidePhone() {
+  phoneToken++;
+  phoneStage.classList.remove("is-visible", "photo-mode");
+  phoneHint.classList.remove("is-visible");
+}
+
+function renderPhone() {
+  const sheen = (Math.sin(phoneAngle * Math.PI / 180) + 1) * 50;
+  phone3d.style.setProperty("--sheen", sheen.toFixed(1));
+  phone3d.style.transform = `rotateX(-8deg) rotateY(${phoneAngle}deg)`;
+}
+
+function phoneLoop() {
+  if (!phoneStage.classList.contains("is-visible")) {
+    phoneFrame = null;
+    return;
+  }
+
+  if (!phoneDragging && !reduceMotion) {
+    phoneAngle += 0.6;
+  }
+
+  renderPhone();
+  phoneFrame = requestAnimationFrame(phoneLoop);
+}
+
+function startPhoneSpin() {
+  renderPhone();
+  if (!phoneFrame) {
+    phoneFrame = requestAnimationFrame(phoneLoop);
+  }
+}
+
+phoneStage.addEventListener("pointerdown", function(event) {
+  phoneDragging = true;
+  phoneLastX = event.clientX;
+  phoneStage.classList.add("dragging");
+  phoneStage.setPointerCapture(event.pointerId);
+});
+
+phoneStage.addEventListener("pointermove", function(event) {
+  if (!phoneDragging) return;
+  phoneAngle += (event.clientX - phoneLastX) * 0.8;
+  phoneLastX = event.clientX;
+});
+
+function stopPhoneDrag() {
+  phoneDragging = false;
+  phoneStage.classList.remove("dragging");
+}
+
+phoneStage.addEventListener("pointerup", stopPhoneDrag);
+phoneStage.addEventListener("pointercancel", stopPhoneDrag);
+
+
+/* ==================================
+   EVENT LISTENERS
+================================== */
+
+brandSelect.addEventListener("change", updateModels);
+
+modelSelect.addEventListener("change", updateStorage);
+
+brandSelect.addEventListener("change", hidePhone);
+
+modelSelect.addEventListener("change", function() {
+  showPhone(brandSelect.value, modelSelect.value);
+});
+
+predictButton.addEventListener("click", predictPrice);
+
+
+
+/* ==================================
+   SALES FORECAST (brand level, India)
+   Units are in MILLIONS of smartphones shipped per calendar year.
+   Sources are listed in the page (Canalys / Omdia / IDC).
+================================== */
+
+const FC_TARGET_YEAR = 2027;
+
+const salesData = {
+  vivo:    { label: "vivo",    start: 2022, units: [25.4, 26.1, 29.5, 32.1],
+             source: "Canalys (2022–2024), Omdia (2025)", note: "vivo figures exclude iQOO." },
+  samsung: { label: "Samsung", start: 2022, units: [28.6, 28.4, 25.7, 23.0],
+             source: "Canalys (2022–2024), Omdia (2025)", note: "" },
+  xiaomi:  { label: "Xiaomi",  start: 2022, units: [29.6, 25.1, 26.6, 19.7],
+             source: "Canalys (2022–2024), Omdia (2025)", note: "Xiaomi figures include the POCO sub-brand." },
+  realme:  { label: "Realme",  start: 2022, units: [20.9, 17.4, 16.6],
+             source: "Canalys (2022–2024)", note: "No published 2025 figure was found, so 2025 is also an estimate." },
+  apple:   { label: "Apple",   start: 2024, units: [12.0, 14.0],
+             source: "IDC (2024, 2025)", note: "Only two years of IDC data, so a regression is not possible." }
+};
+
+const fcBrand  = document.getElementById("fcBrand");
+const fcButton = document.getElementById("fcButton");
+const fcOutput = document.getElementById("fcOutput");
+
+const fcM = function(v) { return v.toFixed(1) + " M"; };
+
+/* Ordinary least squares: y = intercept + slope * x */
+function fcRegression(xs, ys) {
+  const n = xs.length;
+  const mx = xs.reduce(function(a, b) { return a + b; }, 0) / n;
+  const my = ys.reduce(function(a, b) { return a + b; }, 0) / n;
+  let sxy = 0, sxx = 0, sst = 0;
+  for (let i = 0; i < n; i++) {
+    sxy += (xs[i] - mx) * (ys[i] - my);
+    sxx += (xs[i] - mx) * (xs[i] - mx);
+    sst += (ys[i] - my) * (ys[i] - my);
+  }
+  const slope = sxx === 0 ? 0 : sxy / sxx;
+  const intercept = my - slope * mx;
+  let sse = 0;
+  for (let i = 0; i < n; i++) {
+    const e = ys[i] - (intercept + slope * xs[i]);
+    sse += e * e;
+  }
+  return { slope: slope, intercept: intercept,
+           r2: sst === 0 ? 1 : 1 - sse / sst, rmse: Math.sqrt(sse / n) };
+}
+
+function fcForecast(record) {
+  const years = record.units.map(function(_, i) { return record.start + i; });
+  const n = record.units.length;
+  const lastYear = years[n - 1];
+  const targets = [];
+  for (let y = lastYear + 1; y <= FC_TARGET_YEAR; y++) { targets.push(y); }
+
+  if (n >= 3) {
+    const fit = fcRegression(years, record.units);
+    return {
+      method: "linear", years: years, targets: targets, fit: fit,
+      values: targets.map(function(y) { return Math.max(0, fit.intercept + fit.slope * y); }),
+      bands:  targets.map(function(y, i) { return fit.rmse * Math.sqrt(i + 1); })
+    };
+  }
+
+  // Only 2 data points: damped trend (phi = 0.5)
+  const phi = 0.5;
+  const delta = record.units[n - 1] - record.units[n - 2];
+  const values = [], bands = [];
+  let cumulative = 0;
+  targets.forEach(function(y, i) {
+    cumulative += Math.pow(phi, i + 1);
+    values.push(Math.max(0, record.units[n - 1] + delta * cumulative));
+    bands.push(Math.abs(delta) * 0.5 * (i + 1));
+  });
+  return { method: "damped", years: years, targets: targets, fit: null,
+           values: values, bands: bands, phi: phi, delta: delta };
+}
+
+function fcSvg(tag, attrs, text) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.keys(attrs || {}).forEach(function(k) { el.setAttribute(k, attrs[k]); });
+  if (text !== undefined) { el.textContent = text; }
+  return el;
+}
+
+function fcChart(record, f, axisFmt, labelFmt) {
+  const W = 640, H = 300, L = 48, R = 16, T = 24, B = 44;
+  const labels = f.years.concat(f.targets);
+  const values = record.units.concat(f.values);
+  const tops = values.map(function(v, i) {
+    return i >= record.units.length ? v + f.bands[i - record.units.length] : v;
+  });
+  const maxV = Math.max.apply(null, tops) * 1.12;
+  const innerW = W - L - R, innerH = H - T - B;
+  const slot = innerW / labels.length;
+  const barW = Math.min(60, slot * 0.58);
+  const yPos = function(v) { return T + innerH - (v / maxV) * innerH; };
+  const cx = function(i) { return L + slot * i + slot / 2; };
+
+  const svg = fcSvg("svg", { viewBox: "0 0 " + W + " " + H, "class": "fc-chart", role: "img",
+    "aria-label": "Bar chart of yearly shipments with forecast years" });
+
+  for (let i = 0; i <= 4; i++) {
+    const v = (maxV / 4) * i, y = yPos(v);
+    svg.appendChild(fcSvg("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "#e4e8f2", "stroke-width": 1 }));
+    svg.appendChild(fcSvg("text", { x: L - 8, y: y + 4, "text-anchor": "end", "font-size": 11, fill: "#68738b" },
+      (axisFmt ? axisFmt(v) : Math.round(v) + "M")));
+  }
+
+  labels.forEach(function(label, i) {
+    const isF = i >= record.units.length;
+    const x = cx(i), y = yPos(values[i]);
+    svg.appendChild(fcSvg("rect", {
+      x: x - barW / 2, y: y, width: barW, height: T + innerH - y, rx: 7,
+      fill: isF ? "#fff" : "#6157e8", stroke: isF ? "#6157e8" : "none",
+      "stroke-width": isF ? 2 : 0, "stroke-dasharray": isF ? "6 4" : "0"
+    }));
+    svg.appendChild(fcSvg("text", { x: x, y: y - 7, "text-anchor": "middle", "font-size": 12,
+      "font-weight": 700, fill: isF ? "#6157e8" : "#17213a" }, labelFmt ? labelFmt(values[i]) : values[i].toFixed(1)));
+    svg.appendChild(fcSvg("text", { x: x, y: H - 22, "text-anchor": "middle", "font-size": 12, fill: "#68738b" },
+      String(label)));
+    if (isF) {
+      svg.appendChild(fcSvg("text", { x: x, y: H - 8, "text-anchor": "middle", "font-size": 10, fill: "#8b7cff" },
+        "forecast"));
+      const b = f.bands[i - record.units.length];
+      const hi = yPos(values[i] + b), lo = yPos(Math.max(0, values[i] - b));
+      svg.appendChild(fcSvg("line", { x1: x, x2: x, y1: hi, y2: lo, stroke: "#8b7cff", "stroke-width": 2 }));
+      svg.appendChild(fcSvg("line", { x1: x - 7, x2: x + 7, y1: hi, y2: hi, stroke: "#8b7cff", "stroke-width": 2 }));
+      svg.appendChild(fcSvg("line", { x1: x - 7, x2: x + 7, y1: lo, y2: lo, stroke: "#8b7cff", "stroke-width": 2 }));
+    }
+  });
+
+  // trend line
+  const pts = [];
+  if (f.method === "linear") {
+    labels.forEach(function(yr, i) {
+      pts.push([cx(i), yPos(Math.max(0, f.fit.intercept + f.fit.slope * yr))]);
+    });
+  } else {
+    const n = record.units.length;
+    pts.push([cx(n - 1), yPos(record.units[n - 1])]);
+    f.values.forEach(function(v, i) { pts.push([cx(n + i), yPos(v)]); });
+  }
+  svg.appendChild(fcSvg("polyline", {
+    points: pts.map(function(p) { return p[0] + "," + p[1]; }).join(" "),
+    fill: "none", stroke: "#f08a24", "stroke-width": 2.5, "stroke-linecap": "round", "stroke-linejoin": "round"
+  }));
+  pts.forEach(function(p) { svg.appendChild(fcSvg("circle", { cx: p[0], cy: p[1], r: 3.5, fill: "#f08a24" })); });
+  return svg;
+}
+
+function fcStat(label, value, extraClass, highlight) {
+  const box = document.createElement("div");
+  box.className = "fc-stat" + (highlight ? " highlight" : "");
+  const s = document.createElement("small"); s.textContent = label;
+  const b = document.createElement("strong"); b.textContent = value;
+  if (extraClass) { b.className = extraClass; }
+  box.append(s, b);
+  return box;
+}
+
+function fcLegendItem(color, text) {
+  const span = document.createElement("span");
+  const i = document.createElement("i"); i.style.background = color; if (color === "#fff") { i.style.border = "2px dashed #6157e8"; i.style.boxSizing = "border-box"; }
+  span.append(i, document.createTextNode(text));
+  return span;
+}
+
+function runForecast() {
+  const key = fcBrand.value;
+  fcOutput.replaceChildren();
+
+  if (!key) {
+    const p = document.createElement("p");
+    p.className = "fc-empty";
+    p.textContent = "Please select a brand first.";
+    fcOutput.append(p);
+    return;
+  }
+
+  const record = salesData[key];
+  const f = fcForecast(record);
+  const n = record.units.length;
+  const last = record.units[n - 1];
+  const lastYear = f.years[n - 1];
+  const finalVal = f.values[f.values.length - 1];
+  const finalYear = f.targets[f.targets.length - 1];
+  const change = ((finalVal - last) / last) * 100;
+  const up = change >= 0;
+  const y26 = f.targets.indexOf(2026);
+
+  const stats = document.createElement("div");
+  stats.className = "fc-stats";
+  stats.append(
+    fcStat(lastYear + " actual", fcM(last)),
+    fcStat("2026 forecast", y26 >= 0 ? fcM(f.values[y26]) : "–", "", true),
+    fcStat(finalYear + " forecast", fcM(finalVal), up ? "fc-up" : "fc-down", true),
+    fcStat(f.method === "linear" ? "Model fit (R²)" : "Confidence",
+           f.method === "linear" ? f.fit.r2.toFixed(2) : "Low")
+  );
+  fcOutput.append(stats);
+
+  const wrap = document.createElement("div");
+  wrap.className = "fc-chart-wrap";
+  wrap.append(fcChart(record, f));
+  const legend = document.createElement("div");
+  legend.className = "fc-legend";
+  legend.append(
+    fcLegendItem("#6157e8", "Actual shipments (million units)"),
+    fcLegendItem("#f08a24", f.method === "linear" ? "Regression trend line" : "Damped trend"),
+    fcLegendItem("#fff", "Forecast (dashed) with expected range")
+  );
+  wrap.append(legend);
+  fcOutput.append(wrap);
+
+  const note = document.createElement("p");
+  note.className = "fc-method";
+  const dir = (change >= 0 ? "+" : "") + change.toFixed(1) + "%";
+  if (f.method === "linear") {
+    const sign = f.fit.slope >= 0 ? "+" : "−";
+    note.textContent =
+      "Method: simple linear regression on " + n + " yearly points (" + f.years[0] + "–" + lastYear + "). " +
+      "Slope = " + sign + Math.abs(f.fit.slope).toFixed(2) + " million units per year, " +
+      "R² = " + f.fit.r2.toFixed(2) + ", RMSE = " + f.fit.rmse.toFixed(2) + " million. " +
+      "The trend points to " + fcM(finalVal) + " in " + finalYear + " (" + dir + " vs " + lastYear + "). " +
+      "With only " + n + " points this is a rough indication, and the range shown is ± RMSE × √(years ahead).";
+  } else {
+    note.textContent =
+      "Method: only " + n + " years of data, so regression is not meaningful. The forecast adds a damped share " +
+      "(factor " + f.phi + ") of the last yearly change (" + (f.delta >= 0 ? "+" : "") + f.delta.toFixed(1) +
+      " M). Result: " + fcM(finalVal) + " in " + finalYear + " (" + dir + " vs " + lastYear + "). Low confidence.";
+  }
+  fcOutput.append(note);
+
+  if (record.note || record.source) {
+    const src = document.createElement("p");
+    src.className = "fc-method";
+    src.style.borderLeftColor = "#c8cde0";
+    src.textContent = "Source: " + record.source + ". " + record.note;
+    fcOutput.append(src);
+  }
+
+  fcOutput.append(fmBuild(key));
+
+  const scroll = document.createElement("div");
+  scroll.className = "fc-scroll";
+  const table = document.createElement("table");
+  table.className = "fc-table";
+  const head = table.createTHead().insertRow();
+  ["Year", "Shipments (million)", "Type"].forEach(function(h) {
+    const th = document.createElement("th"); th.textContent = h; head.append(th);
+  });
+  const body = table.createTBody();
+  f.years.forEach(function(y, i) {
+    const row = body.insertRow();
+    row.insertCell().textContent = y;
+    row.insertCell().textContent = record.units[i].toFixed(1);
+    row.insertCell().textContent = "Actual (published)";
+  });
+  f.targets.forEach(function(y, i) {
+    const row = body.insertRow();
+    row.className = "is-forecast";
+    row.insertCell().textContent = y;
+    row.insertCell().textContent = f.values[i].toFixed(1);
+    row.insertCell().textContent = "Forecast";
+  });
+  scroll.append(table);
+  fcOutput.append(scroll);
+}
+
+function fcRenderDataset() {
+  const table = document.getElementById("fcDataset");
+  const years = [2022, 2023, 2024, 2025];
+  const head = table.createTHead().insertRow();
+  ["Brand"].concat(years.map(String)).forEach(function(h) {
+    const th = document.createElement("th"); th.textContent = h; head.append(th);
+  });
+  const body = table.createTBody();
+  Object.keys(salesData).forEach(function(k) {
+    const r = salesData[k];
+    const row = body.insertRow();
+    row.insertCell().textContent = r.label;
+    years.forEach(function(y) {
+      const idx = y - r.start;
+      row.insertCell().textContent = (idx >= 0 && idx < r.units.length) ? r.units[idx].toFixed(1) : "–";
+    });
+  });
+}
+
+fcButton.addEventListener("click", runForecast);
+fcBrand.addEventListener("change", runForecast);
+fcRenderDataset();
+
+
+/* ==================================
+   STATE-WISE DEMAND FORECAST
+   Data comes from a CSV: state,brand,year,units
+================================== */
+
+let stData = null;      // { map: {state: {brand: {year: units}}}, states: [], brands: [] }
+let stIsDemo = false;
+
+const stFileInput = document.getElementById("stFile");
+const stStateSel  = document.getElementById("stState");
+const stBrandSel  = document.getElementById("stBrand");
+const stStatus    = document.getElementById("stStatus");
+const stOutput    = document.getElementById("stOutput");
+const stDemoWarn  = document.getElementById("stDemoWarn");
+
+const stNum = new Intl.NumberFormat("en-IN");
+const stFmt = function(v) { return stNum.format(Math.round(v)); };
+const stShort = function(v) {
+  if (v >= 1e7) { return (v / 1e7).toFixed(1) + "Cr"; }
+  if (v >= 1e5) { return (v / 1e5).toFixed(1) + "L"; }
+  if (v >= 1e3) { return (v / 1e3).toFixed(0) + "K"; }
+  return String(Math.round(v));
+};
+
+function stSplitLine(line) {
+  const out = []; let cur = "", q = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { q = !q; }
+    else if (ch === "," && !q) { out.push(cur.trim()); cur = ""; }
+    else { cur += ch; }
+  }
+  out.push(cur.trim());
+  return out;
+}
+
+function stParseCsv(text) {
+  const lines = text.replace(/\r/g, "").split("\n").filter(function(l) { return l.trim() !== ""; });
+  if (!lines.length) { return { error: "The file is empty." }; }
+  const head = stSplitLine(lines[0]).map(function(h) { return h.replace(/^\ufeff/, "").toLowerCase(); });
+  const idx = { state: head.indexOf("state"), brand: head.indexOf("brand"),
+                year: head.indexOf("year"), units: head.indexOf("units") };
+  if (idx.state < 0 || idx.brand < 0 || idx.year < 0 || idx.units < 0) {
+    return { error: "Header row must contain: state, brand, year, units" };
+  }
+  const rows = []; let bad = 0;
+  for (let i = 1; i < lines.length; i++) {
+    const c = stSplitLine(lines[i]);
+    const state = (c[idx.state] || "").trim();
+    const brand = (c[idx.brand] || "").trim();
+    const year = parseInt(c[idx.year], 10);
+    const units = parseFloat(String(c[idx.units] || "").replace(/,/g, ""));
+    if (!state || !brand || !isFinite(year) || !isFinite(units) || units < 0) { bad++; continue; }
+    rows.push({ state: state, brand: brand, year: year, units: units });
+  }
+  return { rows: rows, bad: bad };
+}
+
+function stLoadRows(rows, label) {
+  const map = {}; const brands = {};
+  rows.forEach(function(r) {
+    map[r.state] = map[r.state] || {};
+    map[r.state][r.brand] = map[r.state][r.brand] || {};
+    map[r.state][r.brand][r.year] = (map[r.state][r.brand][r.year] || 0) + r.units;
+    brands[r.brand] = true;
+  });
+  stData = { map: map, states: Object.keys(map).sort(), brands: Object.keys(brands).sort() };
+
+  stStateSel.replaceChildren(new Option("All states (ranking only)", ""));
+  stData.states.forEach(function(s) { stStateSel.add(new Option(s, s)); });
+  stBrandSel.replaceChildren(new Option("All brands", "__all__"));
+  stData.brands.forEach(function(b) { stBrandSel.add(new Option(b, b)); });
+  stStateSel.disabled = false; stBrandSel.disabled = false;
+
+  const yrs = rows.map(function(r) { return r.year; });
+  stStatus.textContent = label + ": " + rows.length + " rows, " + stData.states.length + " states, " +
+    stData.brands.length + " brands, years " + Math.min.apply(null, yrs) + "–" + Math.max.apply(null, yrs) + ".";
+  stOutput.replaceChildren();
+  const p = document.createElement("p"); p.className = "fc-empty";
+  p.textContent = "Data loaded. Choose a brand (and optionally a state) and press Forecast.";
+  stOutput.append(p);
+}
+
+/* Sum units per year for one state and brand ("__all__" = every brand) */
+function stYearMap(state, brand) {
+  const byBrand = stData.map[state] || {};
+  const out = {};
+  Object.keys(byBrand).forEach(function(b) {
+    if (brand !== "__all__" && b !== brand) { return; }
+    Object.keys(byBrand[b]).forEach(function(y) { out[y] = (out[y] || 0) + byBrand[b][y]; });
+  });
+  return out;
+}
+
+function stForecastSeries(yearMap) {
+  const years = Object.keys(yearMap).map(Number).sort(function(a, b) { return a - b; });
+  const units = years.map(function(y) { return yearMap[y]; });
+  const n = years.length;
+  if (n < 2) { return null; }
+  const target = years[n - 1] + 1;
+  if (n >= 3) {
+    const fit = fcRegression(years, units);
+    return { method: "linear", years: years, units: units, targets: [target], fit: fit,
+             values: [Math.max(0, fit.intercept + fit.slope * target)], bands: [fit.rmse] };
+  }
+  const delta = units[1] - units[0];
+  return { method: "damped", years: years, units: units, targets: [target], fit: null,
+           values: [Math.max(0, units[1] + 0.5 * delta)], bands: [Math.abs(delta) * 0.5], phi: 0.5, delta: delta };
+}
+
+function stRun() {
+  stOutput.replaceChildren();
+  if (!stData) {
+    const p = document.createElement("p"); p.className = "fc-empty";
+    p.textContent = "Please load a CSV first.";
+    stOutput.append(p); return;
+  }
+  const brand = stBrandSel.value || "__all__";
+  const state = stStateSel.value;
+  const brandLabel = brand === "__all__" ? "all brands" : brand;
+
+  // ----- ranking of all states -----
+  const ranked = [];
+  stData.states.forEach(function(s) {
+    const f = stForecastSeries(stYearMap(s, brand));
+    if (!f) { return; }
+    const last = f.units[f.units.length - 1];
+    ranked.push({ state: s, last: last, lastYear: f.years[f.years.length - 1],
+                  next: f.values[0], target: f.targets[0],
+                  change: last === 0 ? 0 : ((f.values[0] - last) / last) * 100 });
+  });
+  ranked.sort(function(a, b) { return b.next - a.next; });
+
+  // ----- detail for one state -----
+  if (state) {
+    const f = stForecastSeries(stYearMap(state, brand));
+    if (!f) {
+      const p = document.createElement("p"); p.className = "fc-empty";
+      p.textContent = "Not enough years of data for " + state + " (" + brandLabel + "). At least 2 years are needed.";
+      stOutput.append(p);
+    } else {
+      const n = f.units.length, last = f.units[n - 1];
+      const change = last === 0 ? 0 : ((f.values[0] - last) / last) * 100;
+      const up = change >= 0;
+      const stats = document.createElement("div"); stats.className = "fc-stats";
+      stats.append(
+        fcStat(f.years[n - 1] + " sales", stFmt(last) + " units"),
+        fcStat(f.targets[0] + " forecast", stFmt(f.values[0]) + " units", "", true),
+        fcStat("Expected change", (up ? "▲ +" : "▼ ") + change.toFixed(1) + "%", up ? "fc-up" : "fc-down"),
+        fcStat(f.method === "linear" ? "Model fit (R²)" : "Confidence",
+               f.method === "linear" ? f.fit.r2.toFixed(2) : "Low")
+      );
+      stOutput.append(stats);
+
+      const wrap = document.createElement("div"); wrap.className = "fc-chart-wrap";
+      wrap.append(fcChart({ units: f.units }, f, stShort, function(v) { return stShort(v); }));
+      const legend = document.createElement("div"); legend.className = "fc-legend";
+      legend.append(fcLegendItem("#6157e8", "Actual units sold"),
+        fcLegendItem("#f08a24", f.method === "linear" ? "Regression trend line" : "Damped trend"),
+        fcLegendItem("#fff", "Forecast (dashed) with expected range"));
+      wrap.append(legend);
+      stOutput.append(wrap);
+
+      const note = document.createElement("p"); note.className = "fc-method";
+      note.textContent = f.method === "linear"
+        ? "Method: simple linear regression on " + n + " yearly points for " + state + " (" + brandLabel + "). R² = " +
+          f.fit.r2.toFixed(2) + ", RMSE = " + stFmt(f.fit.rmse) + " units."
+        : "Method: only " + n + " years of data, so a damped trend is used (half of the last yearly change). Low confidence.";
+      stOutput.append(note);
+    }
+  }
+
+  // ----- ranking table -----
+  if (!ranked.length) { return; }
+  const top = document.createElement("div"); top.className = "st-top";
+  top.textContent = "Highest expected demand in " + ranked[0].target + " (" + brandLabel + "): " + ranked[0].state +
+    " with about " + stFmt(ranked[0].next) + " units.";
+  stOutput.append(top);
+
+  const maxNext = ranked[0].next || 1;
+  const scroll = document.createElement("div"); scroll.className = "fc-scroll";
+  const table = document.createElement("table"); table.className = "fc-table st-rank";
+  const head = table.createTHead().insertRow();
+  ["#", "State", "Latest (" + ranked[0].lastYear + ")", "Forecast (" + ranked[0].target + ")", "Change", ""].forEach(function(h) {
+    const th = document.createElement("th"); th.textContent = h; head.append(th);
+  });
+  const body = table.createTBody();
+  ranked.forEach(function(r, i) {
+    const row = body.insertRow();
+    if (r.state === state) { row.className = "is-forecast"; }
+    row.insertCell().textContent = i + 1;
+    row.insertCell().textContent = r.state;
+    row.insertCell().textContent = stFmt(r.last);
+    row.insertCell().textContent = stFmt(r.next);
+    const ch = row.insertCell();
+    ch.textContent = (r.change >= 0 ? "▲ +" : "▼ ") + r.change.toFixed(1) + "%";
+    ch.className = r.change >= 0 ? "fc-up" : "fc-down";
+    const bar = row.insertCell(); bar.className = "bar";
+    const b = document.createElement("div"); b.className = "st-bar";
+    b.style.width = Math.max(3, (r.next / maxNext) * 100) + "%";
+    bar.append(b);
+  });
+  scroll.append(table);
+  stOutput.append(scroll);
+}
+
+/* ---- file upload, template, demo ---- */
+stFileInput.addEventListener("change", function() {
+  const file = stFileInput.files && stFileInput.files[0];
+  if (!file) { return; }
+  const reader = new FileReader();
+  reader.onload = function() {
+    const res = stParseCsv(String(reader.result));
+    if (res.error) { stStatus.textContent = "Could not read file: " + res.error; return; }
+    if (!res.rows.length) { stStatus.textContent = "No valid rows found in the file."; return; }
+    stIsDemo = false; stDemoWarn.hidden = true;
+    stLoadRows(res.rows, file.name);
+    if (res.bad) { stStatus.textContent += " (" + res.bad + " invalid rows skipped)"; }
+  };
+  reader.onerror = function() { stStatus.textContent = "Could not read the file."; };
+  reader.readAsText(file);
+});
+
+document.getElementById("stTemplate").addEventListener("click", function() {
+  const blob = new Blob(["state,brand,year,units\n"], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "state_sales_template.csv";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function() { URL.revokeObjectURL(a.href); }, 1000);
+});
+
+function stDemoRows() {
+  const states = [["Tamil Nadu", 1.0], ["Maharashtra", 1.25], ["Uttar Pradesh", 1.35], ["Karnataka", 0.9],
+                  ["Delhi", 0.7], ["Gujarat", 0.8], ["West Bengal", 0.75], ["Kerala", 0.55]];
+  const brands = [["vivo", 1.2, 0.06], ["Samsung", 1.0, -0.04], ["Xiaomi", 0.9, -0.08],
+                  ["Realme", 0.6, -0.05], ["Apple", 0.35, 0.12]];
+  const rows = []; let seed = 7;
+  states.forEach(function(s, si) {
+    brands.forEach(function(b, bi) {
+      const stateTrend = 0.02 * ((si * 3 + bi) % 5 - 2);
+      for (let y = 2022; y <= 2025; y++) {
+        seed = (seed * 9301 + 49297) % 233280;
+        const noise = (seed / 233280 - 0.5) * 0.08;
+        const v = 600000 * s[1] * b[1] * Math.pow(1 + b[2] + stateTrend, y - 2022) * (1 + noise);
+        rows.push({ state: s[0], brand: b[0], year: y, units: Math.round(v) });
+      }
+    });
+  });
+  return rows;
+}
+
+document.getElementById("stDemo").addEventListener("click", function() {
+  stIsDemo = true; stDemoWarn.hidden = false;
+  stLoadRows(stDemoRows(), "DEMO data (fake)");
+});
+
+document.getElementById("stButton").addEventListener("click", stRun);
+
+
+/* ==================================
+   PRICE CHANGES (up / down indicator)
+   Only official India price revisions that could be verified.
+   Everything else is still at its launch price.
+================================== */
+
+const priceRevisions = {
+  "samsung|Galaxy S25|256GB": {
+    points: [["Jan 2025 (launch)", 80999], ["Aug 2026", 84999]],
+    note: "Samsung raised Galaxy S25 prices in India on 19 Aug 2026 as memory chip costs went up."
+  },
+  "samsung|Galaxy S25|512GB": {
+    points: [["Jan 2025 (launch)", 92999], ["Aug 2026", 104999]],
+    note: "Samsung raised Galaxy S25 prices in India on 19 Aug 2026 as memory chip costs went up."
+  },
+  "samsung|Galaxy A36|128GB": {
+    points: [["Mar 2025 (launch)", 32999], ["Sep 2025", 25999]],
+    note: "Samsung cut the starting price of the Galaxy A36 in India in Sep 2025."
+  },
+  "samsung|Galaxy A56|128GB": {
+    points: [["Mar 2025 (launch)", 41999], ["Sep 2025", 35999]],
+    note: "Samsung cut the starting price of the Galaxy A56 in India in Sep 2025."
+  },
+  "vivo|vivo X300 Pro|512GB": {
+    points: [["Dec 2025 (launch)", 109999], ["Jul 2026", 119999]],
+    note: "vivo raised the X300 Pro price in India by ₹10,000 from 24 Jul 2026."
+  },
+  "vivo|vivo X300 FE|256GB": {
+    points: [["May 2026 (launch)", 79999], ["Jul 2026", 86999], ["Aug 2026", 89999]],
+    note: "vivo raised the X300 FE price twice in 2026 (₹7,000 in July, ₹3,000 on 10 Aug)."
+  },
+  "vivo|vivo X300 FE|512GB": {
+    points: [["May 2026 (launch)", 89999], ["Jul 2026", 96999], ["Aug 2026", 99999]],
+    note: "vivo raised the X300 FE price twice in 2026 (₹7,000 in July, ₹3,000 on 10 Aug)."
+  },
+  "vivo|vivo V70 Elite|256GB": {
+    points: [["Feb 2026 (launch)", 54999], ["2026 (1st hike)", 58999], ["Latest 2026", 66999]],
+    note: "vivo raised the V70 Elite twice in 2026 as memory chip costs went up (₹4,000, then ₹8,000)."
+  }
+};
+
+/* Extra notes for models whose price has not changed */
+const modelNotes = {
+  "vivo|vivo X300": "91mobiles reports the X300 is no longer on vivo India's website, so its launch price is the last known price."
+};
+
+const ptBox   = document.getElementById("priceTrend");
+const ptMoney = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+
+function ptChip(label, arrow, text, cls) {
+  const box = document.createElement("div");
+  box.className = "pt-chip " + cls;
+  const s = document.createElement("small"); s.textContent = label;
+  const b = document.createElement("strong"); b.textContent = (arrow ? arrow + " " : "") + text;
+  box.append(s, b);
+  return box;
+}
+
+function ptRender() {
+  ptBox.replaceChildren();
+  const brand = document.getElementById("brand").value;
+  const model = document.getElementById("modelName").value;
+  const storage = document.getElementById("storage").value;
+  if (!brand || !model || !storage) { return; }
+
+  const note = document.createElement("p");
+  note.className = "pt-note";
+  const rev = priceRevisions[brand + "|" + model + "|" + storage];
+
+  if (!rev) {
+    note.textContent = "No official price change was found for this variant, so the launch price is the latest verified price. " +
+      "Shop prices can still differ because of offers and sales.";
+    ptBox.append(note);
+    return;
+  }
+
+  const first = rev.points[0], last = rev.points[rev.points.length - 1];
+  const delta = last[1] - first[1];
+  const pct = (delta / first[1]) * 100;
+  const cls = delta > 0 ? "up" : "down";
+  const arrow = delta > 0 ? "▲" : "▼";
+  const money = function(v) { return ptMoney.format(Math.abs(Math.round(v))); };
+
+  const chips = document.createElement("div");
+  chips.className = "pt-chips";
+  chips.append(
+    ptChip("Launch price · " + first[0], "", money(first[1]), "flat"),
+    ptChip("Latest verified · " + last[0], "", money(last[1]), "flat"),
+    ptChip(delta > 0 ? "Price went up" : "Price came down", arrow,
+           money(delta) + " (" + (pct >= 0 ? "+" : "−") + Math.abs(pct).toFixed(1) + "%)", cls)
+  );
+  ptBox.append(chips);
+
+  note.textContent = rev.note + " ▲ means costlier to buy, ▼ means cheaper. These are new-phone prices.";
+  ptBox.append(note);
+}
+
+predictButton.addEventListener("click", ptRender);
+
+/* ==================================
+   BRAND MOBILES: PAST / PRESENT / FUTURE PRICE
+   Past    = first verified India price (launch)
+   Present = latest verified India price
+   Future  = simple what-if estimate for FC_TARGET_YEAR:
+             present price x (1 + chosen yearly change).
+             This is NOT a trained ML model.
+================================== */
+
+const FM_SCENARIOS = [
+  { id: "ease", label: "Costs ease (−5% a year)",        rate: -0.05 },
+  { id: "flat", label: "No change (0%)",                 rate: 0 },
+  { id: "rise", label: "Costs keep rising (+5% a year)", rate: 0.05 }
+];
+let fmScenario = "rise";
+
+const fmMoney = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+
+const fmSources = {
+  vivo: [
+    ["X300 and X300 Pro launch prices", "https://m.gsmarena.com/vivo_x300_x300_pro_india_price_sale_date-news-70523.php", "GSMArena"],
+    ["X300 variants", "https://telecomtalk.info/vivo-x300-series-launched-in-india-price/1002168/", "TelecomTalk"],
+    ["X300 Pro price hike (and X300 no longer listed)", "https://www.91mobiles.com/hub/vivo-x300-pro-price-hike-rs-10000-india/amp/", "91mobiles"],
+    ["X300 Ultra launch price", "https://www.91mobiles.com/hub/vivo-x300-ultra-launched-india-price-specifications/", "91mobiles"],
+    ["X300 FE launch price and second hike", "https://www.businesstoday.in/technology/news/story/vivo-x300-fe-gets-second-price-hike-in-india-now-costs-rs-10000-more-548455-2026-08-11", "Business Today"],
+    ["X300 FE 512GB price", "https://www.smartprix.com/bytes/vivo-x300-fe-gets-a-second-price-hike-now-starting-at-%e2%82%b989999/", "Smartprix"],
+    ["X300 FE first hike", "https://telecomtalk.info/vivo-x300-fe-5g-price-in-india/1010607/", "TelecomTalk"],
+    ["V70 Elite price hikes", "https://www.91mobiles.com/hub/vivo-v70-series-price-hike-india-rs-8000/", "91mobiles"]
+  ]
+};
+
+function fmEstimate(price, rate) {
+  if (rate === 0) { return price; }
+  return Math.max(0, Math.round(price * (1 + rate) / 500) * 500 - 1);
+}
+
+/* One row per model: the lowest-priced variant */
+function fmRows(key) {
+  const brandData = mobileData[key];
+  if (!brandData) { return []; }
+  return Object.keys(brandData).map(function(model) {
+    const variants = brandData[model];
+    const storage = Object.keys(variants).sort(function(a, b) { return variants[a] - variants[b]; })[0];
+    const rev = priceRevisions[key + "|" + model + "|" + storage];
+    const points = rev ? rev.points : [["Launch price", variants[storage]]];
+    return {
+      model: model, storage: storage, points: points,
+      changed: !!rev,
+      note: rev ? rev.note : (modelNotes[key + "|" + model] || "")
+    };
+  });
+}
+
+function fmPill(from, to) {
+  const span = document.createElement("span");
+  const d = to - from;
+  if (Math.abs(d) < 1) {
+    span.className = "fm-pill flat";
+    span.textContent = "No change";
+    return span;
+  }
+  const pct = (d / from) * 100;
+  span.className = "fm-pill " + (d > 0 ? "up" : "down");
+  span.textContent = (d > 0 ? "▲ " : "▼ ") + fmMoney.format(Math.abs(Math.round(d))) +
+    " (" + (d > 0 ? "+" : "−") + Math.abs(pct).toFixed(1) + "%)";
+  return span;
+}
+
+function fmSpark(vals) {
+  const W = 92, H = 32, P = 5;
+  const mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals);
+  const svg = fcSvg("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, "aria-hidden": "true" });
+  const pts = vals.map(function(v, i) {
+    const x = P + i * (W - 2 * P) / (vals.length - 1);
+    const y = mx === mn ? H / 2 : H - P - ((v - mn) / (mx - mn)) * (H - 2 * P);
+    return [x, y];
+  });
+  svg.appendChild(fcSvg("polyline", {
+    points: pts.map(function(p) { return p[0] + "," + p[1]; }).join(" "),
+    fill: "none", stroke: "#f08a24", "stroke-width": 2, "stroke-linecap": "round", "stroke-linejoin": "round"
+  }));
+  pts.forEach(function(p, i) {
+    const last = i === pts.length - 1;
+    svg.appendChild(fcSvg("circle", { cx: p[0], cy: p[1], r: 3.2, fill: last ? "#fff" : "#6157e8",
+      stroke: "#6157e8", "stroke-width": 1.6 }));
+  });
+  return svg;
+}
+
+function fmCell(row, className) {
+  const td = row.insertCell();
+  if (className) { td.className = className; }
+  return td;
+}
+
+function fmPriceCell(td, price, label) {
+  const b = document.createElement("strong"); b.textContent = fmMoney.format(price);
+  const s = document.createElement("small"); s.textContent = label;
+  td.append(b, s);
+}
+
+function fmBuild(key) {
+  const brandLabel = salesData[key].label;
+  const rows = fmRows(key);
+  const wrap = document.createElement("div");
+  wrap.className = "fm-wrap";
+
+  if (!rows.length) {
+    const p = document.createElement("p");
+    p.className = "fc-empty";
+    p.textContent = "No mobile price data for this brand yet.";
+    wrap.append(p);
+    return wrap;
+  }
+
+  /* heading + scenario picker */
+  const head = document.createElement("div");
+  head.className = "fm-head";
+  const titleBox = document.createElement("div");
+  const h = document.createElement("h4");
+  h.textContent = brandLabel + " mobiles: past, present and future price";
+  const sub = document.createElement("p");
+  sub.textContent = "One row per model (lowest-priced variant). Past is the first verified India price, " +
+    "present is the latest verified price, and future is an estimate for " + FC_TARGET_YEAR + ".";
+  titleBox.append(h, sub);
+
+  const ctl = document.createElement("label");
+  ctl.className = "fm-ctl";
+  ctl.append(document.createTextNode("FUTURE ESTIMATE ASSUMES"));
+  const sel = document.createElement("select");
+  FM_SCENARIOS.forEach(function(sc) { sel.add(new Option(sc.label, sc.id)); });
+  sel.value = fmScenario;
+  ctl.append(sel);
+  head.append(titleBox, ctl);
+  wrap.append(head);
+
+  /* table */
+  const scroll = document.createElement("div");
+  scroll.className = "fc-scroll";
+  const table = document.createElement("table");
+  table.className = "fc-table fm-table";
+  const hr = table.createTHead().insertRow();
+  ["Model", "Past", "Present", "Past → present", "Future · " + FC_TARGET_YEAR, "Present → future", "Trend"].forEach(function(t) {
+    const th = document.createElement("th"); th.textContent = t; hr.append(th);
+  });
+  const body = table.createTBody();
+  scroll.append(table);
+  wrap.append(scroll);
+
+  function paint() {
+    const sc = FM_SCENARIOS.filter(function(x) { return x.id === fmScenario; })[0];
+    const lo = FM_SCENARIOS[0].rate, hi = FM_SCENARIOS[FM_SCENARIOS.length - 1].rate;
+    body.replaceChildren();
+
+    rows.forEach(function(r) {
+      const first = r.points[0], last = r.points[r.points.length - 1];
+      const future = fmEstimate(last[1], sc.rate);
+      const row = body.insertRow();
+
+      const m = fmCell(row);
+      const mn = document.createElement("strong"); mn.textContent = r.model;
+      const ms = document.createElement("small"); ms.textContent = r.storage;
+      m.append(mn, ms);
+      if (r.note) { const mnote = document.createElement("small"); mnote.textContent = r.note; m.append(mnote); }
+
+      fmPriceCell(fmCell(row), first[1], first[0]);
+      fmPriceCell(fmCell(row), last[1], r.changed ? last[0] : "Launch price, no change found");
+      fmCell(row).append(fmPill(first[1], last[1]));
+
+      const f = fmCell(row, "fm-future");
+      fmPriceCell(f, future, "Range " + fmMoney.format(fmEstimate(last[1], lo)) + " – " + fmMoney.format(fmEstimate(last[1], hi)));
+      fmCell(row).append(fmPill(last[1], future));
+
+      fmCell(row).append(fmSpark(r.points.map(function(p) { return p[1]; }).concat(future)));
+    });
+  }
+  paint();
+  sel.addEventListener("change", function() { fmScenario = sel.value; paint(); });
+
+  const note = document.createElement("p");
+  note.className = "fm-note";
+  note.textContent = "▲ means the phone became costlier, ▼ means cheaper. The future column is a simple what-if estimate " +
+    "(present price × the yearly change you pick), not a trained model, and the range covers the −5% to +5% cases. " +
+    "These are official new-phone prices in ₹; shop prices change with offers and sales. " +
+    "In the trend chart the last, hollow dot is the estimate.";
+  wrap.append(note);
+
+  /* sources */
+  const det = document.createElement("details");
+  det.className = "pt-sources";
+  const sm = document.createElement("summary");
+  sm.textContent = "Price sources for " + brandLabel;
+  det.append(sm);
+  if (fmSources[key]) {
+    const ul = document.createElement("ul");
+    fmSources[key].forEach(function(s) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = s[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = s[2];
+      li.append(document.createTextNode(s[0] + ": "), a);
+      ul.append(li);
+    });
+    det.append(ul);
+  } else {
+    const p = document.createElement("p");
+    p.textContent = "Launch prices and revisions for this brand are listed under “Price sources” in the Mobile Price Checker above.";
+    det.append(p);
+  }
+  wrap.append(det);
+  return wrap;
+}
+
+/* ==================================
+   SCROLL REVEAL ANIMATIONS
+================================== */
+
+const revealElements = document.querySelectorAll(
+  ".hero-content, " +
+  ".hero-card, " +
+  ".section-title, " +
+  ".workflow-card, " +
+  ".stat-card, " +
+  ".table-container, " +
+  ".clean-card, " +
+  ".prediction-box, " +
+  ".metric-card, " +
+  ".ethic-card, " +
+  ".conclusion-panel"
+);
+
+if ("IntersectionObserver" in window) {
+
+  const revealObserver = new IntersectionObserver(
+    function(entries, observer) {
+
+      entries.forEach(function(entry) {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("is-visible");
+
+          // Animate only the first time it enters view
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  revealElements.forEach(function(element, index) {
+
+    // Small stagger effect between elements
+    element.style.transitionDelay =
+      `${(index % 4) * 75}ms`;
+
+    element.classList.add("reveal");
+
+    revealObserver.observe(element);
+  });
+
+} else {
+
+  // Fallback for older browsers
+  revealElements.forEach(function(element) {
+    element.classList.add("is-visible");
+  });
+
+}
+  </script>
+</body>
+</html>
